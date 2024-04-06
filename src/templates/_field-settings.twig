@@ -1,0 +1,114 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.selectField({
+    label: 'Target'|t('remix'),
+    instructions: 'Remix either the title or slug.'|t('remix'),
+    id: 'RemixTarget',
+    name: 'RemixTarget',
+    options: [
+        { value: 'title', label: 'Title'|t('remix') },
+        { value: 'slug', label: 'Slug'|t('remix') },
+    ],
+    value: field.RemixTarget,
+}) }}
+
+<div class="remix-find-replace-rules field">
+    <div class="heading">
+        <label>Find &amp; Replace</label>
+    </div>
+    <div class="instructions">
+        <p>Configure the find and replace rules for the field. The buttons below will auto-fill rules.</p>
+    </div>
+    {{ forms.editableTable({
+        id: 'RemixFindReplaceRules',
+        name: 'RemixFindReplaceRules',
+        cols: [
+            {
+                heading: 'Find'|t('your-plugin-handle'),
+                type: 'singleline',
+            },
+            {
+                heading: 'Replace'|t('your-plugin-handle'),
+                type: 'singleline',
+            },
+            {
+                heading: 'Regex'|t('your-plugin-handle'),
+                type: 'checkbox',
+                class: 'thin',
+            },
+        ],
+        rows: field.RemixFindReplaceRules ?? [],
+        allowAdd: true,
+        allowDelete: true,
+        allowReorder: true,
+        defaultValues: {
+            0: '',
+            1: '',
+            2: false,
+        },
+    }) }}
+</div>
+
+<div class="flex gap-2 remix-templates">
+    {{ forms.button({
+        label: 'Drop "A/The" for Sorting',
+        attributes: {
+            data: { pattern: 'stripArticles' }
+        },
+    }) }}
+    {{ forms.button({
+        label: 'Strip Punctuation',
+        attributes: {
+            data: { pattern: 'stripPunctuation' }
+        },
+    }) }}
+    {{ forms.button({
+        label: 'Strip Special Characters',
+        attributes: {
+            data: { pattern: 'stripSpecial' }
+        },
+    }) }}
+    {{ forms.button({
+        label: 'Spaces to Dashes',
+        attributes: {
+            data: { pattern: 'spacesToDashes' }
+        },
+    }) }}
+    {{ forms.button({
+        label: 'Dashes to Underscores',
+        attributes: {
+            data: { pattern: 'dashesToUnderscores' }
+        },
+    }) }}
+</div>
+
+{{ forms.textField({
+    label: 'Prepend'|t('remix'),
+    name: 'RemixPrepend',
+    value: field.RemixPrepend,
+    class: 'remix-prepend-input'
+}) }} 
+
+{{ forms.textField({
+    label: 'Append'|t('remix'),
+    name: 'RemixAppend',
+    value: field.RemixAppend,
+    class: 'remix-append-input'
+}) }}
+
+{% set transformOptions = [
+    { label: 'None'|t('remix'), value: 'none' },
+    { label: 'Lowercase'|t('remix'), value: 'lowercase' },
+    { label: 'Uppercase'|t('remix'), value: 'uppercase' },
+    { label: 'Capitalize'|t('remix'), value: 'capitalize' },
+] %}
+
+{{ forms.radioGroupField({
+    label: 'Text Transform'|t('remix'),
+    instructions: 'Select a text transformation option'|t('remix'),
+    name: 'RemixTextTransform',
+    options: transformOptions,
+    value: field.RemixTextTransform ?? '',
+}) }}
+
+{% do view.registerAssetBundle("mlathrom\\craftremix\\RemixAsset") %}

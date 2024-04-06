@@ -1,0 +1,43 @@
+{
+  "name": "mlathrom/craft-remix",
+  "description": "Remix is a custom field type for Craft CMS that transforms entry titles or slugs using find & replace rules, appending/prepending text, and case transformations. The transformed value becomes the field's content, usable for sorting and searching entries.  ",
+  "type": "craft-plugin",
+  "license": "proprietary",
+  "support": {
+    "email": "matt@mlathrom.com"
+  },
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.0.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "mlathrom\\craftremix\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "remix",
+    "name": "Remix",
+    "developer": "Matt Lathrom",
+    "documentationUrl": ""
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}
