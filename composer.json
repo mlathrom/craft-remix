@@ -1,6 +1,6 @@
 {
   "name": "mlathrom/craft-remix",
-  "description": "Remix is a custom field type for Craft CMS that transforms entry titles or slugs using find & replace rules, appending/prepending text, and case transformations. The transformed value becomes the field's content, usable for sorting and searching entries.  ",
+  "description": "Transform and output your entry titles and slugs with this custom field. Great for sorting, filtering, SEO, and more.",
   "type": "craft-plugin",
   "license": "proprietary",
   "support": {
