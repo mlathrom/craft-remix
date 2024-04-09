@@ -24,15 +24,15 @@
         name: 'RemixFindReplaceRules',
         cols: [
             {
-                heading: 'Find'|t('your-plugin-handle'),
+                heading: 'Find'|t('remix'),
                 type: 'singleline',
             },
             {
-                heading: 'Replace'|t('your-plugin-handle'),
+                heading: 'Replace'|t('remix'),
                 type: 'singleline',
             },
             {
-                heading: 'Regex'|t('your-plugin-handle'),
+                heading: 'Regex'|t('remix'),
                 type: 'checkbox',
                 class: 'thin',
             },
@@ -107,6 +107,7 @@
     label: 'Text Transform'|t('remix'),
     instructions: 'Select a text transformation option'|t('remix'),
     name: 'RemixTextTransform',
+    class: 'remix-text-transform',
     options: transformOptions,
     value: field.RemixTextTransform ?? '',
 }) }}

@@ -13,6 +13,7 @@ class RemixAsset extends AssetBundle
         $this->depends = [
             CpAsset::class,
         ];
+
         $this->js = [
             'js/remix.js',
         ];
