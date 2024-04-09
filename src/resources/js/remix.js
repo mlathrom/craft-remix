@@ -28,7 +28,7 @@ const findReplaceTemplates = {
 
 const buttons = document.querySelectorAll('.remix-templates button');
 const findReplaceRules = document.querySelector('.remix-find-replace-rules');
-const findReplaceRulesButton = document.querySelector('.remix-templates button.btn');
+const findReplaceRulesButton = document.querySelector('.remix-find-replace-rules button.btn');
 
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
