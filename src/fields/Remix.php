@@ -12,6 +12,8 @@ use craft\helpers\Html;
 use craft\helpers\StringHelper;
 use yii\db\ExpressionInterface;
 use yii\db\Schema;
+use craft\web\View;
+use mlathrom\craftremix\RemixAsset;
 
 /**
  * Remix field type
@@ -19,10 +21,10 @@ use yii\db\Schema;
 class Remix extends Field implements PreviewableFieldInterface, SortableFieldInterface
 {
     public string $RemixTarget = 'title';
-    public string $RemixTextTransform = 'none';
+    public array $RemixFindReplaceRules = [];
     public string $RemixPrepend = '';
     public string $RemixAppend = '';
-    public array $RemixFindReplaceRules = [];
+    public string $RemixTextTransform = 'none';
     
     public static function displayName(): string
     {
@@ -48,10 +50,10 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     {
         return array_merge(parent::attributeLabels(), [
             'RemixTarget' => Craft::t('app', 'Target'),
-            'RemixTextTransform' => Craft::t('app', 'Text Transform'),
+            'RemixFindReplaceRules' => Craft::t('app', 'Find and Replace'),
             'RemixPrepend' => Craft::t('app', 'Prepend'),
             'RemixAppend' => Craft::t('app', 'Append'),
-            'RemixFindReplaceRules' => Craft::t('app', 'Find and Replace'),
+            'RemixTextTransform' => Craft::t('app', 'Text Transform'),
         ]);
     }
 
@@ -59,10 +61,10 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     {
         return array_merge(parent::defineRules(), [
             ['RemixTarget', 'in', 'range' => ['title', 'slug']],
+            ['RemixFindReplaceRules', 'validateFindReplaceRules'],
             ['RemixPrepend', 'string'],
             ['RemixAppend', 'string'],
             ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'capitalize']],
-            ['RemixFindReplaceRules', 'validateFindReplaceRules'],
         ]);
     }
 
@@ -78,13 +80,20 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         }
     }
 
-    public function normalizeValue(mixed $value, ?ElementInterface $element): mixed
+    public function checkTitleSlugPresence(ElementInterface $element): bool
+    {
+        $originalValue = $element->{$this->RemixTarget};
+        $check = $this->RemixTarget === 'title' && $originalValue !== '()' && $originalValue !== null || $this->RemixTarget === 'slug' && $element->getStatus() !== 'draft';
+
+        return $check;
+    }
+
+    public function normalizeValue(mixed $value = null, ?ElementInterface $element): mixed
     {
         if ($element) {
             $originalValue = $element->{$this->RemixTarget};
-
-            // If the target is slug and the entry is a draft, set the slug to blank
-            if ($this->RemixTarget === 'title' && $originalValue !== '()' || $this->RemixTarget === 'slug' && $element->getStatus() !== 'draft') {
+            
+            if ($this->checkTitleSlugPresence($element)) {
                 // Apply find and replace rules sequentially
                 foreach ($this->RemixFindReplaceRules as $rule) {
                     $find = $rule[0];
@@ -119,22 +128,20 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                         $value = $originalValue;
                         break;
                 }
-            } else {
-                $value = "There's no ". $this->RemixTarget . ' to remix yet.';
             }
         }
-    
         return $value;
     }
 
     public function settings(): array
     {
         return [
-            'RemixTarget' => $this->RemixTarget,
-            'RemixTextTransform' => $this->RemixTextTransform,
-            'RemixPrepend' => $this->RemixPrepend,
-            'RemixAppend' => $this->RemixAppend,
-            'RemixFindReplaceRules' => $this->RemixFindReplaceRules,
+            'target' => $this->RemixTarget,
+            'findReplaceRules' => $this->RemixFindReplaceRules,
+            'prepend' => $this->RemixPrepend,
+            'append' => $this->RemixAppend,
+            'textTransform' => $this->RemixTextTransform,
+            'fieldId' => '#' . $this->handle,
         ];
     }
 
@@ -144,14 +151,30 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
             'remix/_field-settings',
             [
                 'field' => $this,
+                'fieldId' => $this->handle,
             ]
         );
     }
 
     protected function inputHtml(mixed $value, ?ElementInterface $element, bool $inline): string
     {
-        // Display the sort title (which will be automatically generated)
-        return Html::tag('p', $value, ['class' => 'light']);
+        $view = Craft::$app->getView();
+        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
+        $fieldId = str_replace('-', '_', $this->handle);
+        
+        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
+        $view = Craft::$app->getView();
+        $view->registerAssetBundle(RemixAsset::class);
+        $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson); // Use the field handle to create a 
+    
+        if (!$this->checkTitleSlugPresence($element)) {
+            $value = 'There\'s no ' . $fieldId . ' to remix yet.';
+        }
+        
+        return Craft::$app->view->renderTemplate('remix/_input-html', [
+            'value' => $value,
+            'fieldId' => $this->handle, // Pass the field handle to the template
+        ]);
     }
 
     public function getElementValidationRules(): array

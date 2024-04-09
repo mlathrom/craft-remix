@@ -1,0 +1,11 @@
+{% import "_includes/forms" as forms %}
+
+{% set fieldId = fieldId ?? 'remix' %}
+
+{{ forms.text({
+    id: fieldId,
+    name: fieldId,
+    value: value,
+    readonly: true,
+    class: 'remix-field',
+}) }}
