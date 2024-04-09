@@ -1,16 +1,16 @@
 const findReplaceTemplates = {
     stripArticles: {
-        find: '/^(The|A)\\s+/g',
+        find: '/^(The|A)\\s+/',
         replace: '',
         regex: true
     },
     stripPunctuation: {
-        find: '/[^\\w\\s]/g',
+        find: '/[^\\w\\s]/',
         replace: '',
         regex: true
     },
     stripSpecial: {
-        find: '/[^a-zA-Z0-9\\s]/g',
+        find: '/[^a-zA-Z0-9\\s]/',
         replace: '',
         regex: true
     },
@@ -70,20 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const regex = rule[2];
     
                     if (regex) {
-                        const findRegex = new RegExp(find);
+                        const findRegex = new RegExp(find, 'g');
                         newValue = newValue.replace(findRegex, replace);
                     } else {
                         newValue = newValue.replace(find, replace);
                     }
                 });
-            }
-
-            if (remixSettings.prepend) {
-                newValue = remixSettings.prepend + newValue;
-            }
-
-            if(remixSettings.append) {
-                newValue = newValue + remixSettings.append;
             }
 
             if (remixSettings.RemixTextTransform) {
@@ -100,6 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     default:
                         break;
                 }
+            }
+
+            if (remixSettings.prepend) {
+                newValue = remixSettings.prepend + newValue;
+            }
+
+            if(remixSettings.append) {
+                newValue = newValue + remixSettings.append;
             }
 
             field.value = newValue;
