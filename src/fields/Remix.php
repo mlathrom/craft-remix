@@ -91,7 +91,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     public function normalizeValue(mixed $value = null, ?ElementInterface $element): mixed
     {
         if ($element) {
-            $originalValue = $element->{$this->RemixTarget};
+            $value = $element->{$this->RemixTarget};
             
             if ($this->checkTitleSlugPresence($element)) {
                 // Apply find and replace rules sequentially
@@ -101,33 +101,33 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                     $isRegex = $rule[2];
         
                     if ($isRegex) {
-                        $originalValue = preg_replace($find, $replace, $originalValue);
+                        $value = preg_replace($find, $replace, $value);
                     } else {
-                        $originalValue = str_replace($find, $replace, $originalValue);
+                        $value = str_replace($find, $replace, $value);
                     }
                 }
-        
-                // Prepend value
-                $originalValue = $this->RemixPrepend . $originalValue;
-        
-                // Append value
-                $originalValue .= $this->RemixAppend;
-        
+
                 // Apply text transforming
                 switch ($this->RemixTextTransform) {
                     case 'lowercase':
-                        $value = strtolower($originalValue);
+                        $value = strtolower($value);
                         break;
                     case 'uppercase':
-                        $value = strtoupper($originalValue);
+                        $value = strtoupper($value);
                         break;
                     case 'capitalize':
-                        $value = ucwords($originalValue);
+                        $value = ucwords($value);
                         break;
                     default:
-                        $value = $originalValue;
+                        $value = $value;
                         break;
                 }
+
+                // Prepend value
+                $value = $this->RemixPrepend . $value;
+        
+                // Append value
+                $value .= $this->RemixAppend;
             }
         }
         return $value;

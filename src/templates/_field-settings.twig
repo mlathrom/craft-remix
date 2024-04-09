@@ -24,15 +24,15 @@
         name: 'RemixFindReplaceRules',
         cols: [
             {
-                heading: 'Find'|t('remix'),
+                heading: 'Find'|t('your-plugin-handle'),
                 type: 'singleline',
             },
             {
-                heading: 'Replace'|t('remix'),
+                heading: 'Replace'|t('your-plugin-handle'),
                 type: 'singleline',
             },
             {
-                heading: 'Regex'|t('remix'),
+                heading: 'Regex'|t('your-plugin-handle'),
                 type: 'checkbox',
                 class: 'thin',
             },
@@ -47,6 +47,7 @@
             2: false,
         },
     }) }}
+    {{ forms.errorList(field.getErrors('RemixFindReplaceRules')) }}
 </div>
 
 <div class="flex gap-2 remix-templates">
@@ -82,6 +83,21 @@
     }) }}
 </div>
 
+{% set transformOptions = [
+    { label: 'None'|t('remix'), value: 'none' },
+    { label: 'Lowercase'|t('remix'), value: 'lowercase' },
+    { label: 'Uppercase'|t('remix'), value: 'uppercase' },
+    { label: 'Capitalize'|t('remix'), value: 'capitalize' },
+] %}
+
+{{ forms.radioGroupField({
+    label: 'Text Transform'|t('remix'),
+    instructions: 'Select a text transformation option'|t('remix'),
+    name: 'RemixTextTransform',
+    options: transformOptions,
+    value: field.RemixTextTransform ?? '',
+}) }}
+
 {{ forms.textField({
     label: 'Prepend'|t('remix'),
     name: 'RemixPrepend',
@@ -94,22 +110,6 @@
     name: 'RemixAppend',
     value: field.RemixAppend,
     class: 'remix-append-input'
-}) }}
-
-{% set transformOptions = [
-    { label: 'None'|t('remix'), value: 'none' },
-    { label: 'Lowercase'|t('remix'), value: 'lowercase' },
-    { label: 'Uppercase'|t('remix'), value: 'uppercase' },
-    { label: 'Capitalize'|t('remix'), value: 'capitalize' },
-] %}
-
-{{ forms.radioGroupField({
-    label: 'Text Transform'|t('remix'),
-    instructions: 'Select a text transformation option'|t('remix'),
-    name: 'RemixTextTransform',
-    class: 'remix-text-transform',
-    options: transformOptions,
-    value: field.RemixTextTransform ?? '',
 }) }}
 
 {% do view.registerAssetBundle("mlathrom\\craftremix\\RemixAsset") %}
