@@ -7,12 +7,9 @@ use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\base\PreviewableFieldInterface;
 use craft\base\SortableFieldInterface;
-use craft\elements\db\ElementQueryInterface;
-use craft\helpers\Html;
+use craft\fields\conditions\TextFieldConditionRule;
 use craft\helpers\StringHelper;
-use yii\db\ExpressionInterface;
 use yii\db\Schema;
-use craft\web\View;
 use mlathrom\craftremix\RemixAsset;
 
 /**
@@ -64,7 +61,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
             ['RemixFindReplaceRules', 'validateFindReplaceRules'],
             ['RemixPrepend', 'string'],
             ['RemixAppend', 'string'],
-            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'capitalize']],
+            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'titlecase']],
         ]);
     }
 
@@ -83,52 +80,61 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     public function checkTitleSlugPresence(ElementInterface $element): bool
     {
         $originalValue = $element->{$this->RemixTarget};
-        $check = $this->RemixTarget === 'title' && $originalValue !== '()' && $originalValue !== null || $this->RemixTarget === 'slug' && $element->getStatus() !== 'draft';
+
+        $isTitleCheck = $this->RemixTarget === 'title' && $originalValue !== '()' && $originalValue !== null;
+        $isSlugCheck = $this->RemixTarget === 'slug' && $element->getStatus() !== 'draft';
+
+        $check = $isTitleCheck || $isSlugCheck;
 
         return $check;
     }
 
     public function normalizeValue(mixed $value = null, ?ElementInterface $element): mixed
     {
-        if ($element) {
-            $value = $element->{$this->RemixTarget};
-            
-            if ($this->checkTitleSlugPresence($element)) {
-                // Apply find and replace rules sequentially
-                foreach ($this->RemixFindReplaceRules as $rule) {
-                    $find = $rule[0];
-                    $replace = $rule[1];
-                    $isRegex = $rule[2];
-        
-                    if ($isRegex) {
-                        $value = preg_replace($find, $replace, $value);
-                    } else {
-                        $value = str_replace($find, $replace, $value);
-                    }
-                }
+        $value = $this->checkTitleSlugPresence($element) ? $value : null;
 
-                // Apply text transforming
-                switch ($this->RemixTextTransform) {
-                    case 'lowercase':
-                        $value = strtolower($value);
-                        break;
-                    case 'uppercase':
-                        $value = strtoupper($value);
-                        break;
-                    case 'capitalize':
-                        $value = ucwords($value);
-                        break;
-                    default:
-                        $value = $value;
-                        break;
-                }
+        return $value;
+    }
 
-                // Prepend value
-                $value = $this->RemixPrepend . $value;
+    public function serializeValue(mixed $value, ?ElementInterface $element): mixed
+    {
+        $value = $element->{$this->RemixTarget};
         
-                // Append value
-                $value .= $this->RemixAppend;
+        if ($this->checkTitleSlugPresence($element)) {
+            // Apply find and replace rules sequentially
+            foreach ($this->RemixFindReplaceRules as $rule) {
+                $find = $rule[0];
+                $replace = $rule[1];
+                $isRegex = $rule[2];
+    
+                if ($isRegex) {
+                    $value = preg_replace($find, $replace, $value);
+                } else {
+                    $value = str_replace($find, $replace, $value);
+                }
             }
+
+            // Apply text transforming
+            switch ($this->RemixTextTransform) {
+                case 'lowercase':
+                    $value = strtolower($value);
+                    break;
+                case 'uppercase':
+                    $value = strtoupper($value);
+                    break;
+                case 'titlecase':
+                    $value = ucwords($value);
+                    break;
+                default:
+                    $value = $value;
+                    break;
+            }
+
+            // Prepend value
+            $value = $this->RemixPrepend . $value;
+    
+            // Append value
+            $value .= $this->RemixAppend;
         }
         return $value;
     }
@@ -160,20 +166,15 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     {
         $view = Craft::$app->getView();
         $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
-        $fieldId = str_replace('-', '_', $this->handle);
         
         $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
         $view = Craft::$app->getView();
         $view->registerAssetBundle(RemixAsset::class);
-        $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson); // Use the field handle to create a 
-    
-        if (!$this->checkTitleSlugPresence($element)) {
-            $value = 'There\'s no ' . $fieldId . ' to remix yet.';
-        }
+        $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson);
         
         return Craft::$app->view->renderTemplate('remix/_input-html', [
             'value' => $value,
-            'fieldId' => $this->handle, // Pass the field handle to the template
+            'fieldId' => $this->handle,
         ]);
     }
 
@@ -189,14 +190,6 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
 
     public function getElementConditionRuleType(): array|string|null
     {
-        return null;
-    }
-
-    public static function queryCondition(
-        array $instances,
-        mixed $value,
-        array &$params,
-    ): ExpressionInterface|array|string|false|null {
-        return parent::queryCondition($instances, $value, $params);
+        return TextFieldConditionRule::class;
     }
 }
