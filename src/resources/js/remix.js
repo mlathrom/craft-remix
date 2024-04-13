@@ -1,16 +1,16 @@
 const findReplaceTemplates = {
     stripArticles: {
-        find: '/^(The|A)\\s+/',
+        find: '^(The|A)\\s+',
         replace: '',
         regex: true
     },
     stripPunctuation: {
-        find: '/[^\\w\\s]/',
+        find: '[^\\w\\s]',
         replace: '',
         regex: true
     },
     stripSpecial: {
-        find: '/[^a-zA-Z0-9\\s]/',
+        find: '[^a-zA-Z0-9\\s]',
         replace: '',
         regex: true
     },
@@ -29,6 +29,10 @@ const findReplaceTemplates = {
 const buttons = document.querySelectorAll('.remix-templates button');
 const findReplaceRules = document.querySelector('.remix-find-replace-rules');
 const findReplaceRulesButton = document.querySelector('.remix-find-replace-rules button.btn');
+
+function processRegExtString(input, flags) {
+    return new RegExp(input, flags);
+}
 
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
@@ -69,22 +73,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (remixSettings.findReplaceRules[0]) {
-                remixSettings.findReplaceRules[0].forEach((rule) => {
-                    const find = rule[0];
+            if (remixSettings.findReplaceRules) {
+                Object.values(remixSettings.findReplaceRules).forEach((rule) => {
+                    let find = rule[0];
                     const replace = rule[1];
-                    const regex = rule[2];
+                    const ignoreCase = rule[2];
+                    const isRegex = rule[3];
     
-                    if (regex) {
-                        const findRegex = new RegExp(find, 'g');
-                        newValue = newValue.replace(findRegex, replace);
-                    } else {
+                    if (isRegex) {
+                        find = find.replace(/\\/g, '\\\\');
+                        find = new RegExp(rule[0], 'g');
                         newValue = newValue.replace(find, replace);
+                    } else {
+                        find = RegExp(find, 'ig');
+                        if (ignoreCase) {
+                            find = RegExp(find, 'ig');
+                            newValue = newValue.replace(find, replace);
+                        } else {
+                            newValue = newValue.replaceAll(find, replace);
+                        }
                     }
                 });
             }
 
-            if (remixSettings.RemixTextTransform) {
+            if (remixSettings.textTransform) {
                 switch (remixSettings.textTransform) {
                     case 'uppercase':
                         newValue = newValue.toUpperCase();
@@ -100,13 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            if (remixSettings.prepend) {
-                newValue = remixSettings.prepend + newValue;
-            }
-
-            if(remixSettings.append) {
-                newValue = newValue + remixSettings.append;
-            }
+            newValue = remixSettings.prepend + newValue + remixSettings.append;
 
             field.value = newValue;
         });
