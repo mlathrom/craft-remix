@@ -59,9 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const remixSettings = JSON.parse(remixSettingsJson);
         const target = document.querySelector('#' + remixSettings.target);
 
+
         target.addEventListener('input', () => {
             const value = target.value;
             let newValue = value;
+
+            if (value === '') {
+                field.value = '';
+                return;
+            }
 
             if (remixSettings.findReplaceRules[0]) {
                 remixSettings.findReplaceRules[0].forEach((rule) => {
