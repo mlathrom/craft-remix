@@ -103,7 +103,8 @@
     name: 'RemixPrepend',
     value: field.RemixPrepend,
     class: 'remix-prepend-input'
-}) }} 
+}) }}
+{{ forms.errorList(field.getErrors('RemixPrepend')) }}
 
 {{ forms.textField({
     label: 'Append'|t('remix'),
@@ -111,5 +112,6 @@
     value: field.RemixAppend,
     class: 'remix-append-input'
 }) }}
+{{ forms.errorList(field.getErrors('RemixAppend')) }}
 
 {% do view.registerAssetBundle("mlathrom\\craftremix\\RemixAsset") %}
