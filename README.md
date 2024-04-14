@@ -1,22 +1,48 @@
 # Remix
 
-Remix is a custom field type for Craft CMS that transforms entry titles or slugs using find & replace rules, appending/prepending text, and case transformations. The transformed value becomes the field's content, usable for sorting and searching entries.
+![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
-## Requirements
+## Overview
 
-This plugin requires Craft CMS 5.0.0 or later, and PHP 8.2 or later.
+The Remix field outputs the transformed value of your title or slug based on rules you define, including:
+
+ - Find and replace
+ - Uppercase, lowercase, and title case transformations
+ - Append text
+ - Prepend text
+
+### Features
+ - **Live Refesh** - as you type your title or slug
+ - **Regular Expressions** - for find and replace
+ - **Ignore Case** - for find and replace
+ - **Filter Elements** - in the Control Panel
+ - **Sort Elements** - in the Control Panel
+
+### Use Cases
+Sorting, Filtering, Translation, Redaction, Formatting, SEO
+
+### Translations
+English, Spanish, French, German, Korean. More to come!
+
+## Remix in Action
+![Create remix rules](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
+![Transform titles and slugs](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-02-transform.jpg?v1)
+![Remix your content for sorting, filtering, SEO and more.](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-03-remix-content.jpg?v2)
+
+## Origin Story
+This field was built to address a specific need: strip "The" and "A" from titles to create a sorting field. In fact, the original name of this plugin was **Sort Title**. But after some tinkering, it became clear that this field had more potential. 
+
+Thus, the Remix field was born.
+
+---
 
 ## Installation
 
 You can install this plugin from the Plugin Store or with Composer.
 
-#### From the Plugin Store
+Requires Craft CMS 5.0.0 or later, and PHP 8.2 or later.
 
-Go to the Plugin Store in your project’s Control Panel and search for “Remix”. Then press “Install”.
-
-#### With Composer
-
-Open your terminal and run the following commands:
+### With Composer
 
 ```bash
 # go to the project directory
@@ -29,10 +55,11 @@ composer require mlathrom/craft-remix
 ./craft plugin/install remix
 ```
 
-## Features
- - Target either the entry title or slug
- - Define find & replace rules
- - Append or prepend additional text
- - Transform text to uppercase, lowercase, or title case
- - Sort entries by Remix field content
- - Search entries using Remix field content
+---
+
+## How to Use
+1. Create a Remix field
+2. Select a target (Title or Slug)
+3. Define your rules
+4. Add the field to your element
+5. Remix autofills when you add or modify the title or slug of an element
