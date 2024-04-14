@@ -44,14 +44,19 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return Schema::TYPE_STRING;
     }
 
+    public static function isRequirable(): bool
+    {
+        return false;
+    }
+
     public function attributeLabels(): array
     {
         return array_merge(parent::attributeLabels(), [
             'RemixTarget' => Craft::t('app', 'Target'),
             'RemixFindReplaceRules' => Craft::t('app', 'Find and Replace'),
-            'RemixPrepend' => Craft::t('app', 'Prepend'),
-            'RemixAppend' => Craft::t('app', 'Append'),
-            'RemixTextTransform' => Craft::t('app', 'Text Transform'),
+            'RemixTextTransform' => Craft::t('remix', 'Text Transform'),
+            'RemixPrepend' => Craft::t('remix', 'Prepend'),
+            'RemixAppend' => Craft::t('remix', 'Append'),
         ]);
     }
 
@@ -60,9 +65,9 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return array_merge(parent::defineRules(), [
             ['RemixTarget', 'in', 'range' => ['title', 'slug']],
             ['RemixFindReplaceRules', 'validateFindReplaceRules'],
+            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'titlecase']],
             ['RemixPrepend', 'string'],
             ['RemixAppend', 'string'],
-            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'titlecase']],
         ]);
     }
 
@@ -110,7 +115,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                 $isRegex = $rule[3];
     
                 if ($isRegex) {
-                    $findRegex = '/' . $find  . '/';
+                    $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
                     $value = preg_replace($findRegex, $replace, $value);
                 } else {
                     if ($ignoreCase) {
@@ -167,8 +172,6 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     protected function inputHtml(mixed $value, ?ElementInterface $element, bool $inline): string
     {
         $view = Craft::$app->getView();
-        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
-        
         $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
         $view = Craft::$app->getView();
         $view->registerAssetBundle(RemixAsset::class);

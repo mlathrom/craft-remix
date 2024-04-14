@@ -81,13 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const isRegex = rule[3];
     
                     if (isRegex) {
-                        find = find.replace(/\\/g, '\\\\');
+                        let flags = 'g' + (ignoreCase ? 'i' : '');
+                        find = new RegExp(find, flags);
                         find = new RegExp(rule[0], 'g');
                         newValue = newValue.replace(find, replace);
                     } else {
-                        find = RegExp(find, 'ig');
                         if (ignoreCase) {
-                            find = RegExp(find, 'ig');
+                            let flags = ignoreCase ? 'gi' : 'g';
+                            find = new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), flags);
                             newValue = newValue.replace(find, replace);
                         } else {
                             newValue = newValue.replaceAll(find, replace);
