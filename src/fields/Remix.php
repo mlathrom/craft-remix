@@ -9,6 +9,7 @@ use craft\base\PreviewableFieldInterface;
 use craft\base\SortableFieldInterface;
 use craft\fields\conditions\TextFieldConditionRule;
 use craft\helpers\StringHelper;
+use yii\db\ExpressionInterface;
 use yii\db\Schema;
 use mlathrom\craftremix\RemixAsset;
 
@@ -35,12 +36,17 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
 
     public static function phpType(): string
     {
-        return 'mixed';
+        return 'string|null';
     }
 
-    public static function dbType(): array|string|null
+    public static function dbType(): string
     {
         return Schema::TYPE_STRING;
+    }
+
+    public static function isRequirable(): bool
+    {
+        return false;
     }
 
     public function attributeLabels(): array
@@ -48,9 +54,9 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return array_merge(parent::attributeLabels(), [
             'RemixTarget' => Craft::t('app', 'Target'),
             'RemixFindReplaceRules' => Craft::t('app', 'Find and Replace'),
-            'RemixPrepend' => Craft::t('app', 'Prepend'),
-            'RemixAppend' => Craft::t('app', 'Append'),
-            'RemixTextTransform' => Craft::t('app', 'Text Transform'),
+            'RemixTextTransform' => Craft::t('remix', 'Text Transform'),
+            'RemixPrepend' => Craft::t('remix', 'Prepend'),
+            'RemixAppend' => Craft::t('remix', 'Append'),
         ]);
     }
 
@@ -59,9 +65,9 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return array_merge(parent::defineRules(), [
             ['RemixTarget', 'in', 'range' => ['title', 'slug']],
             ['RemixFindReplaceRules', 'validateFindReplaceRules'],
+            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'titlecase']],
             ['RemixPrepend', 'string'],
             ['RemixAppend', 'string'],
-            ['RemixTextTransform', 'in', 'range' => ['none', 'lowercase', 'uppercase', 'titlecase']],
         ]);
     }
 
@@ -69,7 +75,8 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     {
         foreach ($this->RemixFindReplaceRules as $rule) {
             if (isset($rule[2]) && $rule[2]) {
-                if (@preg_match($rule[0], '') === false) {
+                $find = '/' . $rule[0] . '/';
+                if (@preg_match($find, '') === false) {
                     $this->addError($attribute, Craft::t('remix', 'Invalid regex pattern.'));
                     break;
                 }
@@ -101,20 +108,24 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         $value = $element->{$this->RemixTarget};
         
         if ($this->checkTitleSlugPresence($element)) {
-            // Apply find and replace rules sequentially
             foreach ($this->RemixFindReplaceRules as $rule) {
                 $find = $rule[0];
                 $replace = $rule[1];
-                $isRegex = $rule[2];
+                $ignoreCase = $rule[2];
+                $isRegex = $rule[3];
     
                 if ($isRegex) {
-                    $value = preg_replace($find, $replace, $value);
+                    $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
+                    $value = preg_replace($findRegex, $replace, $value);
                 } else {
-                    $value = str_replace($find, $replace, $value);
+                    if ($ignoreCase) {
+                        $value = str_ireplace($find, $replace, $value);
+                    } else {
+                        $value = str_replace($find, $replace, $value);
+                    }
                 }
             }
 
-            // Apply text transforming
             switch ($this->RemixTextTransform) {
                 case 'lowercase':
                     $value = strtolower($value);
@@ -122,7 +133,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                 case 'uppercase':
                     $value = strtoupper($value);
                     break;
-                case 'titlecase':
+                case 'capitalize':
                     $value = ucwords($value);
                     break;
                 default:
@@ -130,11 +141,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                     break;
             }
 
-            // Prepend value
-            $value = $this->RemixPrepend . $value;
-    
-            // Append value
-            $value .= $this->RemixAppend;
+            $value = $this->RemixPrepend . $value . $this->RemixAppend;
         }
         return $value;
     }
@@ -166,8 +173,6 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     {
         $view = Craft::$app->getView();
         $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
-        
-        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
         $view = Craft::$app->getView();
         $view->registerAssetBundle(RemixAsset::class);
         $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson);
@@ -191,5 +196,13 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     public function getElementConditionRuleType(): array|string|null
     {
         return TextFieldConditionRule::class;
+    }
+
+    public static function queryCondition(
+        array $instances,
+        mixed $value,
+        array &$params,
+    ): ExpressionInterface|array|string|false|null {
+        return parent::queryCondition($instances, $value, $params);
     }
 }

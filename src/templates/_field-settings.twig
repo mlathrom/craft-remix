@@ -1,38 +1,42 @@
 {% import '_includes/forms' as forms %}
 
 {{ forms.selectField({
-    label: 'Target'|t('remix'),
-    instructions: 'Remix either the title or slug.'|t('remix'),
+    label: field.attributeLabels.RemixTarget,
     id: 'RemixTarget',
     name: 'RemixTarget',
     options: [
-        { value: 'title', label: 'Title'|t('remix') },
-        { value: 'slug', label: 'Slug'|t('remix') },
+        { value: 'title', label: 'Title'|t('app') },
+        { value: 'slug', label: 'Slug'|t('app') },
     ],
     value: field.RemixTarget,
 }) }}
 
 <div class="remix-find-replace-rules field">
     <div class="heading">
-        <label>Find &amp; Replace</label>
+        <label>{{ field.attributeLabels.RemixFindReplaceRules }}</label>
     </div>
     <div class="instructions">
-        <p>Configure the find and replace rules for the field. The buttons below will auto-fill rules.</p>
+        <p>{{ 'Rules are applied in order.'|t('remix') }}</p>
     </div>
     {{ forms.editableTable({
         id: 'RemixFindReplaceRules',
         name: 'RemixFindReplaceRules',
         cols: [
             {
-                heading: 'Find'|t('your-plugin-handle'),
+                heading: 'Find Text'|t('app'),
                 type: 'singleline',
             },
             {
-                heading: 'Replace'|t('your-plugin-handle'),
+                heading: 'Replace Text'|t('app'),
                 type: 'singleline',
             },
             {
-                heading: 'Regex'|t('your-plugin-handle'),
+                heading: 'Ignore Case'|t('remix'),
+                type: 'checkbox',
+                class: 'thin',
+            },
+            {
+                heading: 'RegEx'|t('remix'),
                 type: 'checkbox',
                 class: 'thin',
             },
@@ -41,6 +45,7 @@
         allowAdd: true,
         allowDelete: true,
         allowReorder: true,
+        addRowLabel: 'Add a rule'|t('app'),
         defaultValues: {
             0: '',
             1: '',
@@ -84,22 +89,21 @@
 </div>
 
 {% set transformOptions = [
-    { label: 'None'|t('remix'), value: 'none' },
+    { label: 'None'|t('app'), value: 'none' },
     { label: 'Lowercase'|t('remix'), value: 'lowercase' },
     { label: 'Uppercase'|t('remix'), value: 'uppercase' },
     { label: 'Title case'|t('remix'), value: 'titlecase' },
 ] %}
 
 {{ forms.radioGroupField({
-    label: 'Text Transform'|t('remix'),
-    instructions: 'Select a text transformation option'|t('remix'),
+    label: field.attributeLabels.RemixTextTransform,
     name: 'RemixTextTransform',
     options: transformOptions,
     value: field.RemixTextTransform ?? '',
 }) }}
 
 {{ forms.textField({
-    label: 'Prepend'|t('remix'),
+    label: field.attributeLabels.RemixPrepend,
     name: 'RemixPrepend',
     value: field.RemixPrepend,
     class: 'remix-prepend-input'
@@ -107,7 +111,7 @@
 {{ forms.errorList(field.getErrors('RemixPrepend')) }}
 
 {{ forms.textField({
-    label: 'Append'|t('remix'),
+    label: field.attributeLabels.RemixAppend,
     name: 'RemixAppend',
     value: field.RemixAppend,
     class: 'remix-append-input'
