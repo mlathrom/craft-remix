@@ -137,7 +137,6 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
                     $value = ucwords($value);
                     break;
                 default:
-                    $value = $value;
                     break;
             }
 
