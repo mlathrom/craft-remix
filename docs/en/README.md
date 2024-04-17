@@ -2,6 +2,9 @@
 
 ![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## Overview
 
 The Remix field outputs the transformed value of your title or slug based on rules you define, including:
@@ -21,8 +24,12 @@ The Remix field outputs the transformed value of your title or slug based on rul
 ### Use Cases
 Sorting, Filtering, Translation, Redaction, Formatting, SEO
 
-### Translations
-English, Spanish, French, German, Korean. More to come!
+## How to Use
+1. Create a Remix field
+2. Select a target (Title or Slug)
+3. Define your rules
+4. Add the field to your element
+5. Remix autofills when you add or modify the title or slug of an element
 
 ## Remix in Action
 ![Create remix rules](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # tell Craft to install the plugin
 ./craft plugin/install remix
 ```
-
----
-
-## How to Use
-1. Create a Remix field
-2. Select a target (Title or Slug)
-3. Define your rules
-4. Add the field to your element
-5. Remix autofills when you add or modify the title or slug of an element

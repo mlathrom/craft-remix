@@ -2,6 +2,9 @@
 
 ![Remix-plakat](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## Oversikt
 
 Remix-feltet gir ut den transformerte verdien av tittelen eller sluggen din basert på reglene du definerer, inkludert:
@@ -21,8 +24,12 @@ Remix-feltet gir ut den transformerte verdien av tittelen eller sluggen din base
 ### Bruksområder
 Sortering, filtrering, oversettelse, redigering, formatering, SEO
 
-### Oversettelser
-Engelsk, spansk, fransk, tysk, koreansk. Flere kommer!
+## Hvordan bruke
+1. Opprett et Remix-felt
+2. Velg et mål (tittel eller slug)
+3. Definer reglene dine
+4. Legg til feltet i elementet ditt
+5. Remix autofyller når du legger til eller endrer tittelen eller sluggen til et element
 
 ## Remix i aksjon
 ![Opprett remix-regler](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # be Craft om å installere plugin-en
 ./craft plugin/install remix
 ```
-
----
-
-## Hvordan bruke
-1. Opprett et Remix-felt
-2. Velg et mål (tittel eller slug)
-3. Definer reglene dine
-4. Legg til feltet i elementet ditt
-5. Remix autofyller når du legger til eller endrer tittelen eller sluggen til et element

@@ -2,6 +2,9 @@
 
 ![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## Übersicht
 
 Das Remix-Feld gibt den transformierten Wert Ihres Titels oder Slugs basierend auf den von Ihnen definierten Regeln aus, einschließlich:
@@ -21,8 +24,12 @@ Das Remix-Feld gibt den transformierten Wert Ihres Titels oder Slugs basierend a
 ### Anwendungsfälle
 Sortierung, Filterung, Übersetzung, Schwärzung, Formatierung, SEO
 
-### Übersetzungen
-Englisch, Spanisch, Französisch, Deutsch, Koreanisch. Weitere folgen!
+## Verwendung
+1. Erstellen Sie ein Remix-Feld
+2. Wählen Sie ein Ziel aus (Titel oder Slug)
+3. Definieren Sie Ihre Regeln
+4. Fügen Sie das Feld zu Ihrem Element hinzu
+5. Remix wird automatisch ausgefüllt, wenn Sie den Titel oder Slug eines Elements hinzufügen oder ändern
 
 ## Remix in Aktion
 ![Remix-Regeln erstellen](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # Craft anweisen, das Plugin zu installieren
 ./craft plugin/install remix
 ```
-
----
-
-## Verwendung
-1. Erstellen Sie ein Remix-Feld
-2. Wählen Sie ein Ziel aus (Titel oder Slug)
-3. Definieren Sie Ihre Regeln
-4. Fügen Sie das Feld zu Ihrem Element hinzu
-5. Remix wird automatisch ausgefüllt, wenn Sie den Titel oder Slug eines Elements hinzufügen oder ändern

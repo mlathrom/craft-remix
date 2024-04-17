@@ -2,6 +2,9 @@
 
 ![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## Descripción general
 
 El campo Remix genera el valor transformado de tu título o slug basado en las reglas que definas, incluyendo:
@@ -21,8 +24,12 @@ El campo Remix genera el valor transformado de tu título o slug basado en las r
 ### Casos de uso
 Ordenar, filtrar, traducir, redactar, formatear, SEO
 
-### Traducciones
-Inglés, español, francés, alemán, coreano. ¡Más por venir!
+## Cómo usar
+1. Crea un campo Remix
+2. Selecciona un objetivo (Título o Slug)
+3. Define tus reglas
+4. Agrega el campo a tu elemento
+5. Remix se autocompleta cuando agregas o modificas el título o slug de un elemento
 
 ## Remix en acción
 ![Crear reglas de remix](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # decirle a Craft que instale el plugin
 ./craft plugin/install remix
 ```
-
----
-
-## Cómo usar
-1. Crea un campo Remix
-2. Selecciona un objetivo (Título o Slug)
-3. Define tus reglas
-4. Agrega el campo a tu elemento
-5. Remix se autocompleta cuando agregas o modificas el título o slug de un elemento

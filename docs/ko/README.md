@@ -2,6 +2,9 @@
 
 ![Remix 포스터](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## 개요
 
 Remix 필드는 다음을 포함하여 정의한 규칙에 따라 제목 또는 슬러그의 변환된 값을 출력합니다:
@@ -21,8 +24,12 @@ Remix 필드는 다음을 포함하여 정의한 규칙에 따라 제목 또는 
 ### 사용 사례
 정렬, 필터링, 번역, 수정, 서식 지정, SEO
 
-### 번역
-영어, 스페인어, 프랑스어, 독일어, 한국어. 더 많은 언어가 추가될 예정입니다!
+## 사용 방법
+1. Remix 필드 생성
+2. 대상 선택 (제목 또는 슬러그)
+3. 규칙 정의
+4. 요소에 필드 추가
+5. 요소의 제목 또는 슬러그를 추가하거나 수정할 때 Remix 자동 입력
 
 ## 실제 Remix 동작
 ![Remix 규칙 생성](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # Craft에게 플러그인을 설치하도록 지시
 ./craft plugin/install remix
 ```
-
----
-
-## 사용 방법
-1. Remix 필드 생성
-2. 대상 선택 (제목 또는 슬러그)
-3. 규칙 정의
-4. 요소에 필드 추가
-5. 요소의 제목 또는 슬러그를 추가하거나 수정할 때 Remix 자동 입력

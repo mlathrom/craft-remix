@@ -2,6 +2,9 @@
 
 ![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
+[English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+
 ## Overzicht
 
 Het Remix-veld geeft de getransformeerde waarde van je titel of slug weer op basis van de regels die je definieert, waaronder:
@@ -21,8 +24,12 @@ Het Remix-veld geeft de getransformeerde waarde van je titel of slug weer op bas
 ### Gebruikscases
 Sorteren, filteren, vertalen, redigeren, opmaken, SEO
 
-### Vertalingen
-Engels, Spaans, Frans, Duits, Koreaans. Meer op komst!
+## Hoe te gebruiken
+1. Maak een Remix-veld
+2. Selecteer een doel (titel of slug)
+3. Definieer je regels
+4. Voeg het veld toe aan je element
+5. Remix vult automatisch aan wanneer je de titel of slug van een element toevoegt of wijzigt
 
 ## Remix in actie
 ![Remix-regels maken](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -54,12 +61,3 @@ composer require mlathrom/craft-remix
 # vertel Craft om de plugin te installeren
 ./craft plugin/install remix
 ```
-
----
-
-## Hoe te gebruiken
-1. Maak een Remix-veld
-2. Selecteer een doel (titel of slug)
-3. Definieer je regels
-4. Voeg het veld toe aan je element
-5. Remix vult automatisch aan wanneer je de titel of slug van een element toevoegt of wijzigt
