@@ -1,4 +1,7 @@
 <?php
+/**
+ * UK English translations for Remix plugin
+ */
 
 return [
     'Remix' => 'Remix',

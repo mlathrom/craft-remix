@@ -1,4 +1,7 @@
 <?php
+/**
+ * Spanish translations for Remix plugin
+ */
 
 return [
     'Remix' => 'Remezclar',

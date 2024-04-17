@@ -1,4 +1,7 @@
 <?php
+/**
+ * French translations for Remix plugin
+ */
 
 return [
     'Remix' => 'Remixer',
