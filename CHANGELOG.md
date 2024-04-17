@@ -1,5 +1,19 @@
 # Release Notes for Remix
 
+## 1.1.1
+Bug fixes, code cleanup, updated docs.
+
+## 🚀  Added
+ - Translations no, nb, nl translations.
+ - READMEs for each translation
+
+## 💡  Changed
+ - Moved "How to Use" above the installation and requirements in README
+ - Removed unused PHP methods
+
+## 🔧 Fixed
+ - Bug where quick add buttons didn't account for ignore case and regex
+
 ## 1.1.0
 This release is Remix's true birth. 👶 
 
