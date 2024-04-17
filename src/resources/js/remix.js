@@ -2,26 +2,31 @@ const findReplaceTemplates = {
     stripArticles: {
         find: '^(The|A)\\s+',
         replace: '',
+        ignoreCase: false,
         regex: true
     },
     stripPunctuation: {
         find: '[^\\w\\s]',
         replace: '',
+        ignoreCase: false,
         regex: true
     },
     stripSpecial: {
         find: '[^a-zA-Z0-9\\s]',
         replace: '',
+        ignoreCase: false,
         regex: true
     },
     spacesToDashes: {
         find: ' ',
         replace: '-',
+        ignoreCase: false,
         regex: false
     },
     dashesToUnderscores: {
         find: '-',
         replace: '_',
+        ignoreCase: false,
         regex: false
     },
 };
@@ -43,8 +48,11 @@ buttons.forEach(button => {
         findReplaceRow = findReplaceRules.querySelectorAll('tbody > tr:last-child > td');
         findReplaceRow[0].querySelector('textarea').value = findReplaceTemplate.find;
         findReplaceRow[1].querySelector('textarea').value = findReplaceTemplate.replace;
+        if (findReplaceTemplate.ignoreCase) {
+            findReplaceRow[2].querySelector('checkbox').checked = true;
+        }
         if (findReplaceTemplate.regex) {
-            findReplaceRow[2].querySelector('.checkbox').checked = true;
+            findReplaceRow[3].querySelector('.checkbox').checked = true;
         }
     });
 });
