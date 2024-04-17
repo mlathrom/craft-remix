@@ -38,7 +38,7 @@ Thus, the Remix field was born.
 
 ## Installation
 
-You can install this plugin from the Plugin Store or with Composer.
+You can install this plugin from the [Plugin Store](https://plugins.craftcms.com/remix?craft5) or with Composer.
 
 Requires Craft CMS 5.0.0 or later, and PHP 8.2 or later.
 
