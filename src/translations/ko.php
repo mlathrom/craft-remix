@@ -1,4 +1,7 @@
 <?php
+/**
+ * Korean translations for Remix plugin
+ */
 
 return [
     'Remix' => '리믹스',
