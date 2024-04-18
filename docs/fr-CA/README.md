@@ -47,7 +47,7 @@ Ainsi est né le champ Remix.
 
 Vous pouvez installer ce plugiciel à partir de la [boutique de plugiciels](https://plugins.craftcms.com/remix) ou avec Composer.
 
-Nécessite Craft CMS 5.0.0 ou version ultérieure et PHP 8.2 ou version ultérieure.
+Nécessite Craft CMS 4.0.0 ou version ultérieure et PHP 8.0.2 ou version ultérieure.
 
 ### Avec Composer
 

@@ -47,7 +47,7 @@ Slik ble Remix-feltet født.
 
 Du kan installere denne plugin-en fra [Plugin-butikk](https://plugins.craftcms.com/remix) eller med Composer.
 
-Krever Craft CMS 5.0.0 eller senere, og PHP 8.2 eller senere.
+Krever Craft CMS 4.0.0 eller senere, og PHP 8.0.2 eller senere.
 
 ### Med Composer
 

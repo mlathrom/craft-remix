@@ -47,7 +47,7 @@ Remix 필드는 다음을 포함하여 정의한 규칙에 따라 제목 또는 
 
 [플러그인 스토어](https://plugins.craftcms.com/remix) 또는 Composer를 통해 이 플러그인을 설치할 수 있습니다.
 
-Craft CMS 5.0.0 이상 및 PHP 8.2 이상이 필요합니다.
+Craft CMS 4.0.0 이상 및 PHP 8.0.2 이상이 필요합니다.
 
 ### Composer를 사용하여
 
