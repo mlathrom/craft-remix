@@ -15,7 +15,7 @@ The Remix field outputs the transformed value of your title or slug based on rul
  - Prepend text
 
 ### Features
- - **Live Refesh** - as you type your title or slug
+ - **Live Refresh** - as you type your title or slug
  - **Regular Expressions** - for find and replace
  - **Ignore Case** - for find and replace
  - **Filter Elements** - in the Control Panel
