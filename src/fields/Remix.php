@@ -29,17 +29,12 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return Craft::t('remix', 'Remix');
     }
 
-    public static function icon(): string
-    {
-        return 'album';
-    }
-
-    public static function phpType(): string
+    public static function valueType(): string
     {
         return 'string|null';
     }
 
-    public static function dbType(): string
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_STRING;
     }
@@ -96,14 +91,14 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         return $check;
     }
 
-    public function normalizeValue(mixed $value = null, ?ElementInterface $element): mixed
+    public function normalizeValue(mixed $value = null, ?ElementInterface $element = null): mixed
     {
         $value = $this->checkTitleSlugPresence($element) ? $value : null;
 
         return $value;
     }
 
-    public function serializeValue(mixed $value, ?ElementInterface $element): mixed
+    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         $value = $element->{$this->RemixTarget};
         
@@ -168,7 +163,7 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         );
     }
 
-    protected function inputHtml(mixed $value, ?ElementInterface $element, bool $inline): string
+    public function getInputHtml(mixed $value, ?ElementInterface $element = null): string
     {
         $view = Craft::$app->getView();
         $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
