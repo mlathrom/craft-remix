@@ -1,6 +1,6 @@
 # Release Notes for Remix
 
-## 1.1.1
+## 1.1.1 - 2024-04-17
 Bug fixes, code cleanup, updated docs.
 
 ## 🚀  Added
@@ -14,7 +14,7 @@ Bug fixes, code cleanup, updated docs.
 ## 🔧 Fixed
  - Bug where quick add buttons didn't account for ignore case and regex
 
-## 1.1.0
+## 1.1.0 - 2024-04-13
 This release is Remix's true birth. 👶 
 
 ### 🚀  Added
@@ -33,5 +33,5 @@ This release is Remix's true birth. 👶
  - Inconsistent find and replace login between frontend and backend
  - Issue where displayed value was not the stored value
 
-## 1.0.0
+## 1.0.0 - 2024-04-08
 - Initial release
