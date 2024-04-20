@@ -1,5 +1,13 @@
 # Release Notes for Remix
 
+## 1.1.2 - 2024-04-20
+
+### 💡  Changed
+ - Updated CHANGELOG for Craft Plugin Store compatibility
+
+### 🔧 Fixed
+ - Spelling errors in CHANGELOG
+
 ## 1.1.1 - 2024-04-17
 Bug fixes, code cleanup, updated docs.
 
