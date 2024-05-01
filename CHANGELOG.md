@@ -1,5 +1,13 @@
 # Release Notes for Remix
 
+## 1.1.3 - 2024-05-01
+
+### 🚀 Added
+ - Russian translation
+
+### 🔧 Fixed
+ - Grammar in package description in composer.json
+
 ## 1.1.2 - 2024-04-20
 
 ### 💡  Changed
