@@ -1,6 +1,6 @@
 {
   "name": "mlathrom/craft-remix",
-  "description": "Transform and output your entry titles and slugs with this custom field. Great for sorting, filtering, SEO, and more.",
+  "description": "A Craft CMS plugin. The Remix field outputs the transformed value of your title or slug based on rules you define.",
   "type": "craft-plugin",
   "license": "proprietary",
   "support": {
@@ -23,7 +23,7 @@
     "handle": "remix",
     "name": "Remix",
     "developer": "Matt Lathrom",
-    "documentationUrl": ""
+    "documentationUrl": "https://github.com/mlathrom/craft-remix"
   },
   "scripts": {
     "check-cs": "ecs check --ansi",
