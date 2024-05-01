@@ -3,7 +3,7 @@
 ![Remix Poster](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
 [English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
-[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md), [Русский](docs/ru/README.md)
 
 ## Overview
 
@@ -47,7 +47,7 @@ Thus, the Remix field was born.
 
 You can install this plugin from the [Plugin Store](https://plugins.craftcms.com/remix) or with Composer.
 
-Requires Craft CMS 4.0.0 or later, and PHP 8.0.2 or later.
+Requires Craft CMS 5.0.0 or later, and PHP 8.2 or later.
 
 ### With Composer
 

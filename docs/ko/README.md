@@ -3,7 +3,7 @@
 ![Remix 포스터](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-00-poster.jpg?v1)
 
 [English](docs/en/README.md), [Deutsch](docs/de/README.md), [Schwiizerdüütsch](docs/de-CH/README.md)
-[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md)
+[Français](docs/fr/README.md), [Français canadien](docs/fr-CA/README.md), [Norsk](docs/no/README.md), [Norsk bokmål](docs/nb/README.md), [Nederlands](docs/nl/README.md), [한국어](docs/ko/README.md), [Español](docs/es/README.md), [Русский](docs/ru/README.md)
 
 ## 개요
 
@@ -47,7 +47,7 @@ Remix 필드는 다음을 포함하여 정의한 규칙에 따라 제목 또는 
 
 [플러그인 스토어](https://plugins.craftcms.com/remix) 또는 Composer를 통해 이 플러그인을 설치할 수 있습니다.
 
-Craft CMS 4.0.0 이상 및 PHP 8.0.2 이상이 필요합니다.
+Craft CMS 5.0.0 이상 및 PHP 8.2 이상이 필요합니다.
 
 ### Composer를 사용하여
 
