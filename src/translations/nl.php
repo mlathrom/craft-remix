@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Kleine letters',
     'Uppercase.' => 'Hoofdletters',
     'Title Case.' => 'Eerste letter hoofdletter',
+    'Remix updates when the entry is saved.' => 'Remix wordt bijgewerkt wanneer het item wordt opgeslagen.',
+    'Test Your Settings' => 'Test je instellingen',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Voer hieronder voorbeeldtekst in om te zien hoe je Remix-instellingen deze zullen transformeren.',
+    'Enter text to preview transformation...' => 'Voer tekst in om transformatie te bekijken...',
+    'Preview Result' => 'Bekijk resultaat',
 ];

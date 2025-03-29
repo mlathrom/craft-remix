@@ -11,7 +11,7 @@ use craft\fields\conditions\TextFieldConditionRule;
 use craft\helpers\StringHelper;
 use yii\db\ExpressionInterface;
 use yii\db\Schema;
-use mlathrom\craftremix\RemixAsset;
+use mlathrom\craftremix\RemixSettingsAsset;
 
 /**
  * Remix field type
@@ -84,64 +84,80 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
         }
     }
 
+    // Modified to work with both drafts and regular saves
     public function checkTitleSlugPresence(ElementInterface $element): bool
     {
         $originalValue = $element->{$this->RemixTarget};
 
         $isTitleCheck = $this->RemixTarget === 'title' && $originalValue !== '()' && $originalValue !== null;
-        $isSlugCheck = $this->RemixTarget === 'slug' && $element->getStatus() !== 'draft';
+        // Removed the draft status check to allow the field to update with draft saves
+        $isSlugCheck = $this->RemixTarget === 'slug' && $originalValue !== null;
 
-        $check = $isTitleCheck || $isSlugCheck;
-
-        return $check;
+        return $isTitleCheck || $isSlugCheck;
     }
 
     public function normalizeValue(mixed $value = null, ?ElementInterface $element): mixed
     {
-        $value = $this->checkTitleSlugPresence($element) ? $value : null;
+        // If there's no element or no target value (title/slug), return null
+        if (!$element || !$this->checkTitleSlugPresence($element)) {
+            return null;
+        }
 
         return $value;
     }
 
     public function serializeValue(mixed $value, ?ElementInterface $element): mixed
     {
+        // If there's no element, return the original value
+        if (!$element) {
+            return $value;
+        }
+
+        // Get the target value (title or slug)
         $value = $element->{$this->RemixTarget};
         
-        if ($this->checkTitleSlugPresence($element)) {
-            foreach ($this->RemixFindReplaceRules as $rule) {
-                $find = $rule[0];
-                $replace = $rule[1];
-                $ignoreCase = $rule[2];
-                $isRegex = $rule[3];
-    
-                if ($isRegex) {
-                    $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
-                    $value = preg_replace($findRegex, $replace, $value);
+        // Make sure we have a value to transform
+        if (!$this->checkTitleSlugPresence($element)) {
+            return $value;
+        }
+
+        // Apply find/replace rules
+        foreach ($this->RemixFindReplaceRules as $rule) {
+            $find = $rule[0];
+            $replace = $rule[1];
+            $ignoreCase = $rule[2] ?? false;
+            $isRegex = $rule[3] ?? false;
+
+            if ($isRegex) {
+                $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
+                $value = preg_replace($findRegex, $replace, $value);
+            } else {
+                if ($ignoreCase) {
+                    $value = str_ireplace($find, $replace, $value);
                 } else {
-                    if ($ignoreCase) {
-                        $value = str_ireplace($find, $replace, $value);
-                    } else {
-                        $value = str_replace($find, $replace, $value);
-                    }
+                    $value = str_replace($find, $replace, $value);
                 }
             }
-
-            switch ($this->RemixTextTransform) {
-                case 'lowercase':
-                    $value = strtolower($value);
-                    break;
-                case 'uppercase':
-                    $value = strtoupper($value);
-                    break;
-                case 'capitalize':
-                    $value = ucwords($value);
-                    break;
-                default:
-                    break;
-            }
-
-            $value = $this->RemixPrepend . $value . $this->RemixAppend;
         }
+
+        // Apply text transformations
+        switch ($this->RemixTextTransform) {
+            case 'lowercase':
+                $value = strtolower($value);
+                break;
+            case 'uppercase':
+                $value = strtoupper($value);
+                break;
+            case 'titlecase':
+                $value = ucwords($value);
+                break;
+            default:
+                break;
+        }
+
+        // Add prefix and suffix
+        $value = $this->RemixPrepend . $value . $this->RemixAppend;
+
         return $value;
     }
 
@@ -159,7 +175,10 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
 
     public function getSettingsHtml(): ?string
     {
-        return Craft::$app->getView()->renderTemplate(
+        $view = Craft::$app->getView();
+        $view->registerAssetBundle(RemixSettingsAsset::class);
+        
+        return $view->renderTemplate(
             'remix/_field-settings',
             [
                 'field' => $this,
@@ -171,13 +190,10 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     protected function inputHtml(mixed $value, ?ElementInterface $element, bool $inline): string
     {
         $view = Craft::$app->getView();
-        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
-        $view = Craft::$app->getView();
-        $view->registerAssetBundle(RemixAsset::class);
-        $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson);
         
-        return Craft::$app->view->renderTemplate('remix/_input-html', [
+        return $view->renderTemplate('remix/_input-html', [
             'value' => $value,
+            'field' => $this,
             'fieldId' => $this->handle,
         ]);
     }

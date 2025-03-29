@@ -15,7 +15,7 @@ Le champ Remix génère la valeur transformée de votre titre ou slug en fonctio
  - Préfixer du texte
 
 ### Fonctionnalités
- - **Actualisation en direct** - au fur et à mesure que vous tapez votre titre ou slug
+ - **Aperçu en direct** - pour tester votre remix
  - **Expressions régulières** - pour rechercher et remplacer
  - **Ignorer la casse** - pour rechercher et remplacer
  - **Filtrer les éléments** - dans le panneau de contrôle

@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Нижний регистр',
     'Uppercase.' => 'Верхний регистр',
     'Title Case.' => 'Каждое слово с заглавной буквы',
+    'Remix updates when the entry is saved.' => 'Remix обновляется при сохранении записи.',
+    'Test Your Settings' => 'Протестируйте настройки',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Введите образец текста ниже, чтобы увидеть, как настройки Remix преобразуют его.',
+    'Enter text to preview transformation...' => 'Введите текст для предварительного просмотра преобразования...',
+    'Preview Result' => 'Предварительный просмотр результата',
 ];

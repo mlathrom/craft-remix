@@ -19,4 +19,9 @@ return [
     'Lowercase.' => '소문자',
     'Uppercase.' => '대문자',
     'Title Case.' => '단어의 첫 글자를 대문자로',
+    'Remix updates when the entry is saved.' => '항목이 저장될 때 리믹스가 업데이트됩니다.',
+    'Test Your Settings' => '설정 테스트',
+    'Enter sample text below to see how your Remix settings will transform it.' => '리믹스 설정이 어떻게 변환되는지 확인하려면 아래에 샘플 텍스트를 입력하세요.',
+    'Enter text to preview transformation...' => '변환 미리보기를 위해 텍스트를 입력하세요...',
+    'Preview Result' => '결과 미리보기',
 ];

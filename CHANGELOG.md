@@ -1,5 +1,13 @@
 # Release Notes for Remix
 
+## 1.2.0 - 2024-06-01
+
+### 💡 Changed
+ - Added live preview to field settings to test your remixes. This makes up for the removal live-update on the entry pages
+ - Fixed field handling to work properly with both draft and regular saves
+ - Removed live preview on entry pages. It's a nice idea, but doesn't work well with Craft's ability to hide titles and slugs
+ - Updated docs to reflect updates
+
 ## 1.1.3 - 2024-05-01
 
 ### 🚀 Added
@@ -10,7 +18,7 @@
 
 ## 1.1.2 - 2024-04-20
 
-### 💡  Changed
+### 💡 Changed
  - Updated CHANGELOG for Craft Plugin Store compatibility
 
 ### 🔧 Fixed
@@ -23,7 +31,7 @@ Bug fixes, code cleanup, updated docs.
  - Translations no, nb, nl translations.
  - READMEs for each translation
 
-## 💡  Changed
+## 💡 Changed
  - Moved "How to Use" above the installation and requirements in README
  - Removed unused PHP methods
 
@@ -33,12 +41,12 @@ Bug fixes, code cleanup, updated docs.
 ## 1.1.0 - 2024-04-13
 This release is Remix's true birth. 👶 
 
-### 🚀  Added
+### 🚀 Added
 - **Ignore Case** for find and replace rules
 - Translations
 - Error lists to field settings
 
-### 💡  Changed
+### 💡 Changed
  - Field can no longer be requirable
  - New plugin icon
  - Capitalize to Title Case

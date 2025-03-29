@@ -15,7 +15,7 @@ El campo Remix genera el valor transformado de tu título o slug basado en las r
  - Anteponer texto
 
 ### Características
- - **Actualización en vivo** - a medida que escribes tu título o slug
+ - **Vista previa en vivo** - para probar tu remix
  - **Expresiones regulares** - para buscar y reemplazar
  - **Ignorar mayúsculas y minúsculas** - para buscar y reemplazar
  - **Filtrar elementos** - en el Panel de control

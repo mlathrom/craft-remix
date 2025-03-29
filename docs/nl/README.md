@@ -15,7 +15,7 @@ Het Remix-veld geeft de getransformeerde waarde van je titel of slug weer op bas
  - Tekst voorvoegen
 
 ### Functies
- - **Live verversen** - terwijl je je titel of slug typt
+ - **Live voorbeeld** - om je remix te testen
  - **Reguliere expressies** - voor zoeken en vervangen
  - **Hoofdlettergevoeligheid negeren** - voor zoeken en vervangen
  - **Elementen filteren** - in het Control Panel

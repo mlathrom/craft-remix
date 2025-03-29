@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Lowercase',
     'Uppercase.' => 'Uppercase',
     'Title Case.' => 'Title Case',
+    'Remix updates when the entry is saved.' => 'Remix updates when the entry is saved.',
+    'Test Your Settings' => 'Test Your Settings',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Enter sample text below to see how your Remix settings will transform it.',
+    'Enter text to preview transformation...' => 'Enter text to preview transformation...',
+    'Preview Result' => 'Preview Result',
 ];

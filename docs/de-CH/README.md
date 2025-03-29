@@ -15,7 +15,7 @@ Das Remix-Feld gibt den transformierten Wert von Ihrem Titel oder Slug basierend
  - Text voranstellen
 
 ### Funktionen
- - **Live-Aktualisierung** - während Sie Ihren Titel oder Slug eingeben
+ - **Live-Vorschau** - zum Testen Ihres Remix
  - **Reguläre Ausdrücke** - zum Suchen und Ersetzen
  - **Groß-/Kleinschreibung ignorieren** - beim Suchen und Ersetzen
  - **Elemente filtern** - im Control Panel

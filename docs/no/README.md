@@ -15,7 +15,7 @@ Remix-feltet gir ut den transformerte verdien av tittelen eller slug-en din base
  - Legg til tekst foran
 
 ### Funksjoner
- - **Sanntidsoppdatering** - mens du skriver inn tittelen eller slug-en din
+ - **Sanntidsvisning** - for å teste remixen din
  - **Regulære uttrykk** - for søk og erstatt
  - **Ignorer små og store bokstaver** - for søk og erstatt
  - **Filtrer elementer** - i kontrollpanelet
