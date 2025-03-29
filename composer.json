@@ -2,6 +2,7 @@
   "name": "mlathrom/craft-remix",
   "description": "A Craft CMS plugin. The Remix field outputs the transformed value of your title or slug based on rules you define.",
   "type": "craft-plugin",
+  "version": "0.2.0",
   "license": "proprietary",
   "support": {
     "email": "matt@mlathrom.com"

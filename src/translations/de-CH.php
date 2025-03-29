@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Chleibuchstabe',
     'Uppercase.' => 'Grossbuchstabe',
     'Title Case.' => 'Erschte Buechstab gross',
+    'Remix updates when the entry is saved.' => 'Remix wird aktualisiert, wenn dr Iitrag gspeicheret wird.',
+    'Test Your Settings' => 'Teste Si Ihri Iistellige',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Gäbe Si unde en Bispiltext ii, zum luege, wie Ihri Remix-Iistellige ihn transformiere wärde.',
+    'Enter text to preview transformation...' => 'Text iigäh zum d Transformation z luege...',
+    'Preview Result' => 'Vorschau vom Ergebnis',
 ];

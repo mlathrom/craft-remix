@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Minúsculas',
     'Uppercase.' => 'Mayúsculas',
     'Title Case.' => 'Mayúsculas iniciales',
+    'Remix updates when the entry is saved.' => 'Remix se actualiza cuando se guarda la entrada.',
+    'Test Your Settings' => 'Prueba tus ajustes',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Introduce texto de ejemplo a continuación para ver cómo tus ajustes de Remix lo transformarán.',
+    'Enter text to preview transformation...' => 'Introduce texto para previsualizar la transformación...',
+    'Preview Result' => 'Previsualizar resultado',
 ];

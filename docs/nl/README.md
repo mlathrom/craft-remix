@@ -15,7 +15,7 @@ Het Remix-veld geeft de getransformeerde waarde van je titel of slug weer op bas
  - Tekst voorvoegen
 
 ### Functies
- - **Live verversen** - terwijl je je titel of slug typt
+ - **Live voorbeeld** - om je remix te testen
  - **Reguliere expressies** - voor zoeken en vervangen
  - **Hoofdlettergevoeligheid negeren** - voor zoeken en vervangen
  - **Elementen filteren** - in het Control Panel
@@ -47,7 +47,7 @@ Zo is het Remix-veld ontstaan.
 
 Je kunt deze plugin installeren vanuit de [Plugin-winkel](https://plugins.craftcms.com/remix) of met Composer.
 
-Vereist Craft CMS 5.0.0 of later en PHP 8.2 of later.
+Vereist Craft CMS 4.0.0 of later en PHP 8.0.2 of later.
 
 ### Met Composer
 

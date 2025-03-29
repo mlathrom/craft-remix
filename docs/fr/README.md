@@ -15,7 +15,7 @@ Le champ Remix génère la valeur transformée de votre titre ou slug en fonctio
  - Préfixer du texte
 
 ### Fonctionnalités
- - **Actualisation en direct** - au fur et à mesure que vous tapez votre titre ou slug
+ - **Aperçu en direct** - pour tester votre remix
  - **Expressions régulières** - pour rechercher et remplacer
  - **Ignorer la casse** - pour rechercher et remplacer
  - **Filtrer les éléments** - dans le panneau de contrôle
@@ -47,7 +47,7 @@ Ainsi, le champ Remix est né.
 
 Vous pouvez installer ce plugin depuis le [boutique des plugins](https://plugins.craftcms.com/remix) ou avec Composer.
 
-Nécessite Craft CMS 5.0.0 ou version ultérieure, et PHP 8.2 ou version ultérieure.
+Nécessite Craft CMS 4.0.0 ou version ultérieure, et PHP 8.0.2 ou version ultérieure.
 
 ### Avec Composer
 

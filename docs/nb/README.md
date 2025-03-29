@@ -15,7 +15,7 @@ Remix-feltet gir ut den transformerte verdien av tittelen eller sluggen din base
  - Legg til tekst foran
 
 ### Funksjoner
- - **Live oppdatering** - mens du skriver inn tittelen eller sluggen din
+ - **Live forhåndsvisning** - for å teste remixen din
  - **Regulære uttrykk** - for søk og erstatt
  - **Ignorer store og små bokstaver** - for søk og erstatt
  - **Filtrer elementer** - i kontrollpanelet
@@ -47,7 +47,7 @@ Slik ble Remix-feltet født.
 
 Du kan installere denne plugin-en fra [Plugin Store](https://plugins.craftcms.com/remix) eller med Composer.
 
-Krever Craft CMS 5.0.0 eller senere, og PHP 8.2 eller senere.
+Krever Craft CMS 4.0.0 eller senere, og PHP 8.0.2 eller senere.
 
 ### Med Composer
 

@@ -15,7 +15,7 @@ The Remix field outputs the transformed value of your title or slug based on rul
  - Prepend text
 
 ### Features
- - **Live Refresh** - as you type your title or slug
+ - **Live Preview** - to test your remix
  - **Regular Expressions** - for find and replace
  - **Ignore Case** - for find and replace
  - **Filter Elements** - in the Control Panel
@@ -47,7 +47,7 @@ Thus, the Remix field was born.
 
 You can install this plugin from the [Plugin Store](https://plugins.craftcms.com/remix) or with Composer.
 
-Requires Craft CMS 5.0.0 or later, and PHP 8.2 or later.
+Requires Craft CMS 4.0.0 or later, and PHP 8.0.2 or later.
 
 ### With Composer
 

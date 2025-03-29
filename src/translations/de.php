@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Kleinbuchstaben',
     'Uppercase.' => 'Großbuchstaben',
     'Title Case.' => 'Erster Buchstabe groß',
+    'Remix updates when the entry is saved.' => 'Remix wird aktualisiert, wenn der Eintrag gespeichert wird.',
+    'Test Your Settings' => 'Testen Sie Ihre Einstellungen',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Geben Sie unten einen Beispieltext ein, um zu sehen, wie Ihre Remix-Einstellungen ihn transformieren werden.',
+    'Enter text to preview transformation...' => 'Text eingeben, um die Transformation zu sehen...',
+    'Preview Result' => 'Vorschau des Ergebnisses',
 ];

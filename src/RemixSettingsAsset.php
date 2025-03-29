@@ -1,11 +1,11 @@
 <?php
-
+// RemixSettingsAsset.php
 namespace mlathrom\craftremix;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
-class RemixAsset extends AssetBundle
+class RemixSettingsAsset extends AssetBundle
 {
     public function init()
     {
@@ -13,11 +13,9 @@ class RemixAsset extends AssetBundle
         $this->depends = [
             CpAsset::class,
         ];
-
         $this->js = [
-            'js/remix.js',
+            'js/remix-settings.js',
         ];
-
         parent::init();
     }
 }

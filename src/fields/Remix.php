@@ -11,7 +11,7 @@ use craft\fields\conditions\TextFieldConditionRule;
 use craft\helpers\StringHelper;
 use yii\db\ExpressionInterface;
 use yii\db\Schema;
-use mlathrom\craftremix\RemixAsset;
+use mlathrom\craftremix\RemixSettingsAsset;
 
 /**
  * Remix field type
@@ -93,50 +93,65 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
 
     public function normalizeValue(mixed $value = null, ?ElementInterface $element = null): mixed
     {
-        $value = $this->checkTitleSlugPresence($element) ? $value : null;
+        // If there's no element or no target value (title/slug), return null
+        if (!$element || !$this->checkTitleSlugPresence($element)) {
+            return null;
+        }
 
         return $value;
     }
 
     public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
+        // If there's no element, return the original value
+        if (!$element) {
+            return $value;
+        }
+
+        // Get the target value (title or slug)
         $value = $element->{$this->RemixTarget};
         
-        if ($this->checkTitleSlugPresence($element)) {
-            foreach ($this->RemixFindReplaceRules as $rule) {
-                $find = $rule[0];
-                $replace = $rule[1];
-                $ignoreCase = $rule[2];
-                $isRegex = $rule[3];
-    
-                if ($isRegex) {
-                    $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
-                    $value = preg_replace($findRegex, $replace, $value);
+        // Make sure we have a value to transform
+        if (!$this->checkTitleSlugPresence($element)) {
+            return $value;
+        }
+        
+        foreach ($this->RemixFindReplaceRules as $rule) {
+            $find = $rule[0];
+            $replace = $rule[1];
+            $ignoreCase = $rule[2];
+            $isRegex = $rule[3];
+
+            if ($isRegex) {
+                $findRegex = '/' . $find  . '/' . ($ignoreCase ? 'i' : '');
+                $value = preg_replace($findRegex, $replace, $value);
+            } else {
+                if ($ignoreCase) {
+                    $value = str_ireplace($find, $replace, $value);
                 } else {
-                    if ($ignoreCase) {
-                        $value = str_ireplace($find, $replace, $value);
-                    } else {
-                        $value = str_replace($find, $replace, $value);
-                    }
+                    $value = str_replace($find, $replace, $value);
                 }
             }
-
-            switch ($this->RemixTextTransform) {
-                case 'lowercase':
-                    $value = strtolower($value);
-                    break;
-                case 'uppercase':
-                    $value = strtoupper($value);
-                    break;
-                case 'capitalize':
-                    $value = ucwords($value);
-                    break;
-                default:
-                    break;
-            }
-
-            $value = $this->RemixPrepend . $value . $this->RemixAppend;
         }
+
+        // Apply text transformations
+        switch ($this->RemixTextTransform) {
+            case 'lowercase':
+                $value = strtolower($value);
+                break;
+            case 'uppercase':
+                $value = strtoupper($value);
+                break;
+            case 'capitalize':
+                $value = ucwords($value);
+                break;
+            default:
+                break;
+        }
+
+        // Add prefix and suffix
+        $value = $this->RemixPrepend . $value . $this->RemixAppend;
+            
         return $value;
     }
 
@@ -154,6 +169,9 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
 
     public function getSettingsHtml(): ?string
     {
+        $view = Craft::$app->getView();
+        $view->registerAssetBundle(RemixSettingsAsset::class);
+        
         return Craft::$app->getView()->renderTemplate(
             'remix/_field-settings',
             [
@@ -166,13 +184,10 @@ class Remix extends Field implements PreviewableFieldInterface, SortableFieldInt
     public function getInputHtml(mixed $value, ?ElementInterface $element = null): string
     {
         $view = Craft::$app->getView();
-        $settingsJson = json_encode($this->settings(), JSON_PRETTY_PRINT);
-        $view = Craft::$app->getView();
-        $view->registerAssetBundle(RemixAsset::class);
-        $view->registerJsVar('remixSettings_' . $this->handle, $settingsJson);
         
         return Craft::$app->view->renderTemplate('remix/_input-html', [
             'value' => $value,
+            'fieldId' => $this->handle,
             'fieldId' => $this->handle,
         ]);
     }

@@ -19,4 +19,9 @@ return [
     'Lowercase.' => 'Små bokstaver',
     'Uppercase.' => 'Store bokstaver',
     'Title Case.' => 'Første bokstav stor',
+    'Remix updates when the entry is saved.' => 'Remix oppdateres når oppføringen lagres.',
+    'Test Your Settings' => 'Test innstillingene dine',
+    'Enter sample text below to see how your Remix settings will transform it.' => 'Skriv inn eksempeltekst nedenfor for å se hvordan Remix-innstillingene dine vil transformere den.',
+    'Enter text to preview transformation...' => 'Skriv inn tekst for å forhåndsvise transformasjonen...',
+    'Preview Result' => 'Forhåndsvis resultat',
 ];
