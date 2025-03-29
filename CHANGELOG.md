@@ -1,5 +1,10 @@
 # Release Notes for Remix
 
+## 1.2.2 - 2025-03-29
+
+### 🚀 Changed
+ - Update placeholder text on Remix fields
+
 ## 1.2.1 - 2025-03-28
 
 ### 🚀 Changed
