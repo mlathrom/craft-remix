@@ -1,8 +1,8 @@
 # Release Notes for Remix
 
-## 1.2.0 - 2024-06-01
+## 1.2.0 - 2025-03-28
 
-### 💡 Changed
+### 🚀 Changed
  - Added live preview to field settings to test your remixes. This makes up for the removal live-update on the entry pages
  - Fixed field handling to work properly with both draft and regular saves
  - Removed live preview on entry pages. It's a nice idea, but doesn't work well with Craft's ability to hide titles and slugs
