@@ -1,5 +1,11 @@
 # Release Notes for Remix
 
+## 1.2.1 - 2025-03-28
+
+### 🚀 Changed
+ - Fixed find and replace rules template buttons on existing remix fields
+ - Remove testing code
+
 ## 1.2.0 - 2025-03-28
 
 ### 🚀 Changed

@@ -77,13 +77,12 @@ function applyRemixTransformations(text, settings) {
 	}
 
 	result = settings.prepend + result + settings.append;
-	console.log('updated')
 	return result;
 }
 
 const templateButtons = document.querySelectorAll('.remix-templates button');
 const remixFindReplaceRulesContainer = document.querySelector('.remix-find-replace-rules');
-const addRuleButton = document.querySelector('.remix-find-replace-rules button.btn');
+const addRuleButton = document.querySelector('.remix-find-replace-rules button.add');
 const textTransformGroup = document.querySelector('.remix-transform-radios');
 const textTransformRadios = textTransformGroup.querySelectorAll('input');
 const prependInput = document.querySelector('.remix-prepend-input');
@@ -96,7 +95,7 @@ if (!previewInput || !previewOutput || !prependInput || !appendInput) {
 } else {
 	
 	function updateRemixSettingsFromDOM() {
-			const findReplaceRows = remixFindReplaceRulesContainer.querySelectorAll('tr');
+			const findReplaceRows = remixFindReplaceRulesContainer.querySelectorAll('tbody > tr');
 			remixSettings.findReplaceRules = [];
 			findReplaceRows.forEach(row => {
 						const findInput = row.querySelector('td:nth-child(1) textarea');
