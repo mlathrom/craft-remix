@@ -24,4 +24,7 @@ return [
     'Enter sample text below to see how your Remix settings will transform it.' => 'Введите образец текста ниже, чтобы увидеть, как настройки Remix преобразуют его.',
     'Enter text to preview transformation...' => 'Введите текст для предварительного просмотра преобразования...',
     'Preview Result' => 'Предварительный просмотр результата',
+    'Rule-by-Rule Breakdown' => 'Пошаговый разбор правил',
+    'Collapse Whitespace' => 'Сжать пробелы',
+    'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).' => 'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).',
 ];

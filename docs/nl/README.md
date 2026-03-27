@@ -9,17 +9,19 @@
 
 Het Remix-veld geeft de getransformeerde waarde van je titel of slug weer op basis van de regels die je definieert, waaronder:
 
- - Zoeken en vervangen
+ - Zoeken en vervangen (met regex-ondersteuning)
  - Hoofdletters, kleine letters en titel case-transformaties
  - Tekst toevoegen
  - Tekst voorvoegen
 
 ### Functies
- - **Live voorbeeld** - om je remix te testen
+ - **Live voorbeeld** - test je regels in realtime met een regel-voor-regel overzicht
+ - **Inline regex-validatie** - zie fouten terwijl je je patronen typt
  - **Reguliere expressies** - voor zoeken en vervangen
  - **Hoofdlettergevoeligheid negeren** - voor zoeken en vervangen
- - **Elementen filteren** - in het Control Panel
- - **Elementen sorteren** - in het Control Panel
+ - **Sjabloonregels** - snel veelvoorkomende patronen toevoegen zoals het verwijderen van lidwoorden, interpunctie of het samenvoegen van witruimte
+ - **Alle elementtypen** - werkt met entries, categorieën en elk element met een titel of slug
+ - **Elementen filteren en sorteren** - in het Control Panel
 
 ### Gebruikscases
 Sorteren, filteren, vertalen, redigeren, opmaken, SEO
@@ -27,9 +29,9 @@ Sorteren, filteren, vertalen, redigeren, opmaken, SEO
 ## Hoe te gebruiken
 1. Maak een Remix-veld
 2. Selecteer een doel (titel of slug)
-3. Definieer je regels
-4. Voeg het veld toe aan je element
-5. Remix vult automatisch aan wanneer je de titel of slug van een element toevoegt of wijzigt
+3. Definieer je regels (of gebruik sjabloonknoppen voor veelvoorkomende patronen)
+4. Voeg het veld toe aan de veldindeling van je element
+5. Remix vult automatisch aan wanneer je het element opslaat
 
 ## Remix in actie
 ![Remix-regels maken](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -40,6 +42,18 @@ Sorteren, filteren, vertalen, redigeren, opmaken, SEO
 Dit veld is gebouwd om een specifieke behoefte aan te pakken: het verwijderen van "The" en "A" uit titels om een sorteerveld te creëren. Sterker nog, de oorspronkelijke naam van deze plugin was **Sort Title**. Maar na wat geknutsel werd duidelijk dat dit veld meer potentie had.
 
 Zo is het Remix-veld ontstaan.
+
+---
+
+## Upgraden naar v2.0.0
+
+Versie 2.0.0 bevat brekende wijzigingen met automatische migratie:
+
+- **Eigenschapsnamen** gewijzigd van PascalCase naar camelCase (bijv. `RemixTarget` → `target`)
+- **Regelopslag** gewijzigd van geïndexeerde arrays naar associatieve arrays
+- **Craft 4 wordt niet meer ondersteund** — gebruik de 0.x-lijn voor Craft 4
+
+De migratie wordt automatisch uitgevoerd wanneer je de update uitvoert. Maak eerst een back-up van je database.
 
 ---
 

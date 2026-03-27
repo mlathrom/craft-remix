@@ -9,17 +9,19 @@
 
 El campo Remix genera el valor transformado de tu título o slug basado en las reglas que definas, incluyendo:
 
- - Buscar y reemplazar
+ - Buscar y reemplazar (con soporte de regex)
  - Transformaciones en mayúsculas, minúsculas y formato de título
  - Agregar texto
  - Anteponer texto
 
 ### Características
- - **Vista previa en vivo** - para probar tu remix
+ - **Vista previa en vivo** - prueba tus reglas en tiempo real con un desglose regla por regla
+ - **Validación de regex en línea** - ve los errores mientras escribes tus patrones
  - **Expresiones regulares** - para buscar y reemplazar
  - **Ignorar mayúsculas y minúsculas** - para buscar y reemplazar
- - **Filtrar elementos** - en el Panel de control
- - **Ordenar elementos** - en el Panel de control
+ - **Reglas de plantilla** - agrega rápidamente patrones comunes como eliminar artículos, puntuación o colapsar espacios en blanco
+ - **Todos los tipos de elementos** - funciona con entradas, categorías y cualquier elemento con título o slug
+ - **Filtrar y ordenar elementos** - en el Panel de control
 
 ### Casos de uso
 Ordenar, filtrar, traducir, redactar, formatear, SEO
@@ -27,9 +29,9 @@ Ordenar, filtrar, traducir, redactar, formatear, SEO
 ## Cómo usar
 1. Crea un campo Remix
 2. Selecciona un objetivo (Título o Slug)
-3. Define tus reglas
-4. Agrega el campo a tu elemento
-5. Remix se autocompleta cuando agregas o modificas el título o slug de un elemento
+3. Define tus reglas (o usa los botones de plantilla para patrones comunes)
+4. Agrega el campo al diseño de campos de tu elemento
+5. Remix se autocompleta cuando guardas el elemento
 
 ## Remix en acción
 ![Crear reglas de remix](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -40,6 +42,18 @@ Ordenar, filtrar, traducir, redactar, formatear, SEO
 Este campo fue creado para abordar una necesidad específica: eliminar "The" y "A" de los títulos para crear un campo de ordenamiento. De hecho, el nombre original de este plugin era **Sort Title**. Pero después de algunos ajustes, quedó claro que este campo tenía más potencial.
 
 Así nació el campo Remix.
+
+---
+
+## Actualización a v2.0.0
+
+La versión 2.0.0 incluye cambios incompatibles con migración automática:
+
+- **Los nombres de propiedades** cambiaron de PascalCase a camelCase (ej. `RemixTarget` → `target`)
+- **El almacenamiento de reglas** cambió de arrays indexados a arrays asociativos
+- **Craft 4 ya no es compatible** — usa la línea 0.x para Craft 4
+
+La migración se ejecuta automáticamente cuando actualizas. Haz una copia de seguridad de tu base de datos primero.
 
 ---
 

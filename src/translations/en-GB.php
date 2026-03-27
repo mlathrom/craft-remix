@@ -24,4 +24,7 @@ return [
     'Enter sample text below to see how your Remix settings will transform it.' => 'Enter sample text below to see how your Remix settings will transform it.',
     'Enter text to preview transformation...' => 'Enter text to preview transformation...',
     'Preview Result' => 'Preview Result',
+    'Rule-by-Rule Breakdown' => 'Rule-by-Rule Breakdown',
+    'Collapse Whitespace' => 'Collapse Whitespace',
+    'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).' => 'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).',
 ];

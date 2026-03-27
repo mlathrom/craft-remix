@@ -1,0 +1,86 @@
+.remix-breakdown-output {
+    font-family: monospace;
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.remix-breakdown-output:not(:empty) {
+    padding: 10px;
+    border: 1px solid var(--gray-200, #e3e5e8);
+    border-radius: 4px;
+    background-color: var(--gray-050, #fafafa);
+}
+
+.remix-preview-output.pane {
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.remix-rule-step {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.remix-rule-step:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.remix-rule-step .remix-rule-label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.remix-rule-step .remix-rule-flags {
+    color: #8f98a3;
+    font-size: 11px;
+}
+
+.remix-rule-step .remix-rule-matches {
+    color: #27ae60;
+    margin: 2px 0;
+}
+
+.remix-rule-step .remix-rule-no-match {
+    color: #8f98a3;
+    margin: 2px 0;
+}
+
+.remix-rule-step .remix-rule-result {
+    color: #2c3e50;
+    margin: 2px 0;
+}
+
+.remix-rule-error {
+    color: #cf1124;
+    font-weight: 600;
+    margin: 2px 0;
+}
+
+.remix-match-highlight {
+    background-color: #fff3cd;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.remix-breakdown-final {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-weight: 600;
+}
+
+.remix-inline-error {
+    color: #cf1124;
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+}
+
+.remix-breakdown-empty {
+    color: #8f98a3;
+    font-style: italic;
+}

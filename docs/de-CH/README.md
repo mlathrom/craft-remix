@@ -9,17 +9,19 @@
 
 Das Remix-Feld gibt den transformierten Wert von Ihrem Titel oder Slug basierend auf den von Ihnen definierten Regeln aus, einschließlich:
 
- - Suchen und Ersetzen
+ - Suchen und Ersetzen (mit Regex-Unterstützung)
  - Umwandlungen in Groß-, Klein- und Titelschreibweise
  - Text anhängen
  - Text voranstellen
 
 ### Funktionen
- - **Live-Vorschau** - zum Testen Ihres Remix
+ - **Live-Vorschau** - testen Sie Ihre Regeln in Echtzeit mit einer Regel-für-Regel-Aufschlüsselung
+ - **Inline-Regex-Validierung** - sehen Sie Fehler während der Eingabe Ihrer Muster
  - **Reguläre Ausdrücke** - zum Suchen und Ersetzen
  - **Groß-/Kleinschreibung ignorieren** - beim Suchen und Ersetzen
- - **Elemente filtern** - im Control Panel
- - **Elemente sortieren** - im Control Panel
+ - **Vorlagenregeln** - schnelles Hinzufügen gängiger Muster wie das Entfernen von Artikeln, Satzzeichen oder das Zusammenfassen von Leerzeichen
+ - **Alle Elementtypen** - funktioniert mit Einträgen, Kategorien und jedem Element mit Titel oder Slug
+ - **Elemente filtern & sortieren** - im Control Panel
 
 ### Anwendungsfälle
 Sortierung, Filterung, Übersetzung, Schwärzung, Formatierung, SEO
@@ -27,9 +29,9 @@ Sortierung, Filterung, Übersetzung, Schwärzung, Formatierung, SEO
 ## Verwendung
 1. Erstellen Sie ein Remix-Feld
 2. Wählen Sie ein Ziel aus (Titel oder Slug)
-3. Definieren Sie Ihre Regeln
-4. Fügen Sie das Feld zu Ihrem Element hinzu
-5. Remix wird automatisch ausgefüllt, wenn Sie den Titel oder Slug eines Elements hinzufügen oder ändern
+3. Definieren Sie Ihre Regeln (oder verwenden Sie Vorlagen-Schaltflächen für gängige Muster)
+4. Fügen Sie das Feld zum Feldlayout Ihres Elements hinzu
+5. Remix wird automatisch ausgefüllt, wenn Sie das Element speichern
 
 ## Remix in Aktion
 ![Remix-Regeln erstellen](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -40,6 +42,18 @@ Sortierung, Filterung, Übersetzung, Schwärzung, Formatierung, SEO
 Dieses Feld wurde entwickelt, um ein bestimmtes Bedürfnis zu erfüllen: "The" und "A" aus Titeln zu entfernen, um ein Sortierfeld zu erstellen. Tatsächlich war der ursprüngliche Name dieses Plugins **Sort Title**. Aber nach einigen Anpassungen wurde klar, dass dieses Feld mehr Potenzial hatte.
 
 So entstand das Remix-Feld.
+
+---
+
+## Upgrade auf v2.0.0
+
+Version 2.0.0 enthält Breaking Changes mit automatischer Migration:
+
+- **Eigenschaftsnamen** wurden von PascalCase zu camelCase geändert (z.B. `RemixTarget` → `target`)
+- **Regelspeicherung** wurde von indizierten Arrays zu assoziativen Arrays geändert
+- **Craft 4 wird nicht mehr unterstützt** — verwenden Sie die 0.x-Linie für Craft 4
+
+Die Migration wird automatisch ausgeführt, wenn Sie das Update durchführen. Sichern Sie vorher Ihre Datenbank.
 
 ---
 
