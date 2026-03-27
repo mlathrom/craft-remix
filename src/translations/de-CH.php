@@ -24,4 +24,7 @@ return [
     'Enter sample text below to see how your Remix settings will transform it.' => 'Gäbe Si unde en Bispiltext ii, zum luege, wie Ihri Remix-Iistellige ihn transformiere wärde.',
     'Enter text to preview transformation...' => 'Text iigäh zum d Transformation z luege...',
     'Preview Result' => 'Vorschau vom Ergebnis',
+    'Rule-by-Rule Breakdown' => 'Regelwiisi Ufschlüsselig',
+    'Collapse Whitespace' => 'Leerziiche zämefasse',
+    'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).' => 'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).',
 ];

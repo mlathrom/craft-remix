@@ -1,59 +1,60 @@
 {% import '_includes/forms' as forms %}
 
 {{ forms.selectField({
-    label: field.attributeLabels.RemixTarget,
-    id: 'RemixTarget',
-    name: 'RemixTarget',
+    label: field.attributeLabels.target,
+    id: 'target',
+    name: 'target',
     options: [
         { value: 'title', label: 'Title'|t('app') },
         { value: 'slug', label: 'Slug'|t('app') },
     ],
-    value: field.RemixTarget,
+    value: field.target,
 }) }}
 
 <div class="remix-find-replace-rules field">
     <div class="heading">
-        <label>{{ field.attributeLabels.RemixFindReplaceRules }}</label>
+        <label>{{ field.attributeLabels.findReplaceRules }}</label>
     </div>
     <div class="instructions">
         <p>{{ 'Rules are applied in order.'|t('remix') }}</p>
     </div>
     {{ forms.editableTable({
-        id: 'RemixFindReplaceRules',
-        name: 'RemixFindReplaceRules',
+        id: 'findReplaceRules',
+        name: 'findReplaceRules',
         class: 'remix-find-replace-rules-table',
-        cols: [
-            {
+        cols: {
+            find: {
                 heading: 'Find Text'|t('app'),
                 type: 'singleline',
             },
-            {
+            replace: {
                 heading: 'Replace Text'|t('app'),
                 type: 'singleline',
             },
-            {
+            ignoreCase: {
                 heading: 'Ignore Case'|t('remix'),
                 type: 'checkbox',
                 class: 'thin',
             },
-            {
+            regex: {
                 heading: 'RegEx'|t('remix'),
                 type: 'checkbox',
                 class: 'thin',
             },
-        ],
-        rows: field.RemixFindReplaceRules ?? [],
+        },
+        rows: field.findReplaceRules ?? [],
         allowAdd: true,
         allowDelete: true,
         allowReorder: true,
         addRowLabel: 'Add a rule'|t('app'),
         defaultValues: {
-            0: '',
-            1: '',
-            2: false,
+            find: '',
+            replace: '',
+            ignoreCase: false,
+            regex: false,
         },
     }) }}
-    {{ forms.errorList(field.getErrors('RemixFindReplaceRules')) }}
+    {{ forms.errorList(field.getErrors('findReplaceRules')) }}
 </div>
 
 <div class="flex gap-2 remix-templates">
@@ -87,6 +88,12 @@
             data: { pattern: 'dashesToUnderscores' }
         },
     }) }}
+    {{ forms.button({
+        label: 'Collapse Whitespace'|t('remix'),
+        attributes: {
+            data: { pattern: 'collapseWhitespace' }
+        },
+    }) }}
 </div>
 
 {% set transformOptions = [
@@ -96,29 +103,29 @@
     { label: 'Title case'|t('remix'), value: 'titlecase' },
 ] %}
 
-{{ forms.radioGroupField({
-    label: field.attributeLabels.RemixTextTransform,
-    name: 'RemixTextTransform',
+{{ forms.buttonGroupField({
+    label: field.attributeLabels.textTransform,
+    name: 'textTransform',
     options: transformOptions,
-    value: field.RemixTextTransform ?? '',
-    class: 'remix-transform-radios'
+    value: field.textTransform ?? 'none',
+    class: 'remix-transform-buttons'
 }) }}
 
 {{ forms.textField({
-    label: field.attributeLabels.RemixPrepend,
-    name: 'RemixPrepend',
-    value: field.RemixPrepend,
+    label: field.attributeLabels.prepend,
+    name: 'prepend',
+    value: field.prepend,
     class: 'remix-prepend-input'
 }) }}
-{{ forms.errorList(field.getErrors('RemixPrepend')) }}
+{{ forms.errorList(field.getErrors('prepend')) }}
 
 {{ forms.textField({
-    label: field.attributeLabels.RemixAppend,
-    name: 'RemixAppend',
-    value: field.RemixAppend,
+    label: field.attributeLabels.append,
+    name: 'append',
+    value: field.append,
     class: 'remix-append-input'
 }) }}
-{{ forms.errorList(field.getErrors('RemixAppend')) }}
+{{ forms.errorList(field.getErrors('append')) }}
 <hr>
 
 <div class="field remix-test-area">
@@ -138,9 +145,19 @@
         <div class="heading">
             <label>{{ 'Preview Result'|t('remix') }}</label>
         </div>
-        <div class="remix-preview-output" style="padding: 5px 7px; border: 1px solid #e3e5e8; border-radius: 4px; background-color: #f3f7fc; min-height: 30px;">
+        <div class="remix-preview-output pane" style="min-height: 30px;">
         </div>
     </div>
+    <div class="remix-breakdown-container" style="margin-top: 15px;">
+        <div class="heading">
+            <label>{{ 'Rule-by-Rule Breakdown'|t('remix') }}</label>
+        </div>
+        <div class="remix-breakdown-output">
+        </div>
+    </div>
+    <blockquote class="note tip">
+        <p>{{ 'Note: The browser preview uses JavaScript regex. Server-side PHP regex (PCRE) may handle some advanced patterns differently (e.g., lookbehinds, Unicode properties).'|t('remix') }}</p>
+    </blockquote>
 </div>
 
 {% do view.registerAssetBundle("mlathrom\\craftremix\\RemixSettingsAsset") %}

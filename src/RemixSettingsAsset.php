@@ -7,7 +7,7 @@ use craft\web\assets\cp\CpAsset;
 
 class RemixSettingsAsset extends AssetBundle
 {
-    public function init()
+    public function init(): void
     {
         $this->sourcePath = '@remix/resources';
         $this->depends = [
@@ -15,6 +15,9 @@ class RemixSettingsAsset extends AssetBundle
         ];
         $this->js = [
             'js/remix-settings.js',
+        ];
+        $this->css = [
+            'css/remix-settings.css',
         ];
         parent::init();
     }

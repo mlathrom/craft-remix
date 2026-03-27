@@ -1,5 +1,28 @@
 # Release Notes for Remix
 
+## 2.0.0 - 2026-03-26
+
+### 🚀 Added
+ - Rule-by-rule breakdown in field settings shows matches, intermediate results, and regex errors in real-time
+ - Inline regex validation highlights invalid patterns as you type
+ - "Collapse Whitespace" template button for cleaning up extra spaces after stripping characters
+ - Regex parity note in field settings UI explaining JS vs PHP regex differences
+ - Support for all element types (categories, etc.), not just entries
+ - CSS for the regex tester breakdown UI
+
+### 🔧 Fixed
+ - Fixed regex validation bug where the validator checked the wrong column (ignoreCase instead of regex flag)
+ - Removed dead `settings()` method override that returned mismatched keys
+
+### 💡 Changed
+ - **Breaking:** Renamed field properties from PascalCase to camelCase (`RemixTarget` → `target`, `RemixFindReplaceRules` → `findReplaceRules`, etc.). Includes migration for existing installations.
+ - **Breaking:** Find/replace rules now stored as associative arrays (`['find' => ..., 'replace' => ...]`) instead of indexed arrays. Includes migration for existing installations.
+ - Moved transformation logic out of `serializeValue()` into a dedicated `transform()` method
+ - Used `mb_` string functions for proper Unicode support in text transforms
+ - Updated ECS config from Craft CMS 4 to Craft CMS 5 ruleset
+ - Added `: void` return type to `RemixSettingsAsset::init()`
+ - Craft 4 (0.x line) is no longer maintained
+
 ## 1.2.2 - 2025-03-29
 
 ### 🚀 Changed

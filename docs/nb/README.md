@@ -9,17 +9,19 @@
 
 Remix-feltet gir ut den transformerte verdien av tittelen eller sluggen din basert på reglene du definerer, inkludert:
 
- - Søk og erstatt
+ - Søk og erstatt (med regex-støtte)
  - Store bokstaver, små bokstaver og titlecase-transformasjoner
  - Legg til tekst
  - Legg til tekst foran
 
 ### Funksjoner
- - **Live forhåndsvisning** - for å teste remixen din
+ - **Live forhåndsvisning** - test reglene dine i sanntid med en regel-for-regel-oversikt
+ - **Inline regex-validering** - se feil mens du skriver mønstrene dine
  - **Regulære uttrykk** - for søk og erstatt
  - **Ignorer store og små bokstaver** - for søk og erstatt
- - **Filtrer elementer** - i kontrollpanelet
- - **Sorter elementer** - i kontrollpanelet
+ - **Malregler** - hurtigtillegg av vanlige mønstre som fjerning av artikler, tegnsetting eller sammenslåing av mellomrom
+ - **Alle elementtyper** - fungerer med oppføringer, kategorier og alle elementer med tittel eller slug
+ - **Filtrer og sorter elementer** - i kontrollpanelet
 
 ### Bruksområder
 Sortering, filtrering, oversettelse, redigering, formatering, SEO
@@ -27,9 +29,9 @@ Sortering, filtrering, oversettelse, redigering, formatering, SEO
 ## Hvordan bruke
 1. Opprett et Remix-felt
 2. Velg et mål (tittel eller slug)
-3. Definer reglene dine
-4. Legg til feltet i elementet ditt
-5. Remix autofyller når du legger til eller endrer tittelen eller sluggen til et element
+3. Definer reglene dine (eller bruk malknapper for vanlige mønstre)
+4. Legg til feltet i elementets feltlayout
+5. Remix autofyller når du lagrer elementet
 
 ## Remix i aksjon
 ![Opprett remix-regler](https://mlathrom-storage-00.sfo3.cdn.digitaloceanspaces.com/github/mlathrom/craft-remix/remix-01-create-rules.jpg?v1)
@@ -40,6 +42,18 @@ Sortering, filtrering, oversettelse, redigering, formatering, SEO
 Dette feltet ble laget for å løse et spesifikt behov: fjerne "The" og "A" fra titler for å lage et sorteringsfelt. Faktisk var det opprinnelige navnet på denne plugin-en **Sort Title**. Men etter litt tweaking ble det klart at dette feltet hadde mer potensial.
 
 Slik ble Remix-feltet født.
+
+---
+
+## Oppgradering til v2.0.0
+
+Versjon 2.0.0 inkluderer brytende endringer med automatisk migrering:
+
+- **Egenskapsnavn** endret fra PascalCase til camelCase (f.eks. `RemixTarget` → `target`)
+- **Regellagring** endret fra indekserte arrayer til assosiative arrayer
+- **Craft 4 støttes ikke lenger** — bruk 0.x-linjen for Craft 4
+
+Migreringen kjøres automatisk når du oppdaterer. Sikkerhetskopier databasen din først.
 
 ---
 
